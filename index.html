@@ -41,11 +41,14 @@
         <!-------------------------------------------------------------------->
         <!-- Title slide -->
         <section>
-            <h2>Communication Tools</h2>
+            <h2>Compact Binary Mergers: From Modelling to Observation</h2>
             <br/>
-            <p>Branson Stephens (University of Wisconsin-Milwaukee)</p>
-            <p> with Roy Williams, Erik Katsavounidis, Patrick Brady, and many others</p>
+            <p>Branson Stephens </p>
+            <p>University of Wisconsin-Milwaukee</p>
             <p>April 23, 2015</p>
+
+            $$ G_{\mu\nu} = 4\piT_{\mu\nu} $$
+
         </section>
         <!-- What? -->
         <section>
@@ -487,6 +490,10 @@ if streamdata['alert_type'] == 'new':
     /* Reveal.initialize(); */
     //Reveal.initialize({ dependencies: [{src: 'bower-static/reveal.js/plugin/zoom.js', async: true }] });
     Reveal.initialize({
+        math: {
+            mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
         dependencies: [
             { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 
