@@ -1,1 +1,508 @@
-Hello world
+<!doctype html/>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Compact Binary Mergers: From Modelling to Observation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css">
+
+    <style>
+        g.viewport {
+            height: 200,
+            width: 600
+        }
+        .reveal h2 h3 { 
+            color: "38D3A9";
+        }
+    </style>
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/reveal.js/3.0.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+</head>
+
+<body>
+<div class="reveal">
+    <div class="slides">
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- Introduction -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- Title slide -->
+        <section>
+            <h2>Communication Tools</h2>
+            <br/>
+            <p>Branson Stephens (University of Wisconsin-Milwaukee)</p>
+            <p> with Roy Williams, Erik Katsavounidis, Patrick Brady, and many others</p>
+            <p>April 23, 2015</p>
+        </section>
+        <!-- What? -->
+        <section>
+            <!-- In other words, the goal of having communication tools. -->
+            <h3>What is being communicated?</h3>
+            <ul>
+                <li>News about candidate GW events, skymaps</li>
+                <li>Significance measures (FAR, nearby glitches)</li>
+                <li>EM observation footprints</li>
+                <li>... any other info required for followup</li>
+            </ul>
+        </section>
+        <!-- Dramatis personae -->
+        <section>
+            <h3>Who is doing the communicating?</h3>
+            <ul>
+                <li>LVC data analysts</li>
+                <li>control room operators, detector characterizers</li>
+                <li>Partner astronomers</li>
+                <li>... and their respective robots</li>
+            </ul>
+        </section>
+        <section>
+            <h3>The flow of "news" is linear</h3>
+            <!-- <div id="news_diagram"></div> -->
+            <img src="./news_flow.pdf"></img>
+        </section>
+        <section>
+            <!-- Remark: It's not just the fact of a new event's existence 
+                that we're interested in -->
+            <h3>Annotation: feedback on an event</h3>
+            <p> Annotations refer to anything uploaded after the initial event description. This includes: </p>
+            <ul>
+                <li>skymaps</li>
+                <li>PSD data files and plots</li>
+                <li>glitch timeseries plots</li>
+                <li>analyst comments</li>
+                <li>labels (i.e., 'EM_READY')</li>
+                <li>VOEvents</li>
+                <li>followup observation footprints</li>
+                <li>basically anything (audio files, GCN Circulars, etc.)</li>
+            </ul>
+        </section>
+        <section>
+            <h3>The flow with annotations</h3>
+            <!-- animated full workflow diagram goes here -->
+            <img src="./annotations_flow.pdf"></img>
+            <!-- Remark: plan is to step through the different components in the
+                order of the linear "news" trajectory -->
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- Analysis pipelines -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>The source: data analysis pipelines</h3>
+            <ul>
+                <li> cWB: Coherent Wave Burst</li>
+                <li> gstlal: gstreamer-basted pipeline with the LIGO Algorithm Library (LAL) </li>
+                <li> gstlal-spiir: GPU-accelerated with IIRs </li>
+                <li> MBTAOnline: Multiband Template Analysis </li>
+            </ul>
+        </section>
+        <section>
+            <h3>Concerning data analysis pipelines</h3>
+            <ul>
+                <li> one-way communication from LVC pipelines
+                <li> Pipelines provide:
+                    <ul>
+                        <li> initial trigger description </li>
+                        <li> some annotations (PSD, significance plots, etc.) </li>
+                    </ul>
+                </li>
+                <li> Events for pipeline characterization and testing </li>
+                <li> 1354 CBC events and 143 burst events during ER6 </li>
+                <li> GRBs from Fermi and Swift pipelines for coincidence searches. </li>
+            </ul>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- GraceDB -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>The hub: GraceDB</h3>
+            <p> (the gravitational wave candidate event database) </p>
+            <ul>
+                <li> ingests and stores information about events </li>
+                <li> exposes information to users and followup processes </li>
+                <li> sends alerts about each new piece of information </li>
+            </ul>
+            <p> By design, GraceDB does not generate any original scientific content, but collects content from other sources.</p>
+        </section>
+        <section>
+            <h3>Objects in GraceDB</h3>
+            <br/>
+            <div class='left' style='float:left;width:{{left.width}}'>
+                <ul>
+                    <li> Event
+                        <ul> 
+                            <li> CoincInspiralEvent </li>
+                            <li> MultiBurstEvent </li>
+                            <li> GrbEvent </li>
+                        </ul>
+                    </li>
+                </ul> 
+            </div>    
+            <div class='right' style='float:right;width:{{right.width}}'>
+                <ul>
+                    <li> EventLog </li>
+                    <li> Label </li>
+                    <li> Tag </li>
+                    <li> VOEvent </li>
+                    <li> EMObservation (proposed) </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Some selected models. Boring! -->
+        <section>
+            <h3>Event</h3>
+            <br/>
+            <div class='left' style='float:left;width:{{left.width}}'>
+                <ul>
+                    <li> submitter </li>
+                    <li> creation time </li>
+                    <li> working group </li>
+                    <li> pipeline </li>
+                    <li> search activity </li>
+                </ul>
+            </div>    
+            <div class='right' style='float:right;width:{{right.width}}'>
+                <ul>
+                    <li> instruments </li>
+                    <li> far </li>
+                    <li> likelihood </li>
+                    <li> gpstime </li>
+                </ul>
+            </div>
+
+        </section>
+        <section>
+            <h3>VOEvent</h3>
+            <br/>
+            <div class='left' style='float:left;width:{{left.width}}'>
+                <ul>
+                    <li> event </li>
+                    <li> creation time </li>
+                    <li> issuer </li>
+                    <li> ivorn </li>
+                    <li> N </li> 
+                </ul>
+            </div>    
+            <div class='right' style='float:right;width:{{right.width}}'>
+                <ul>
+                    <li> type 
+                        <ul>
+                            <li>preliminary </li>
+                            <li>initial</li>
+                            <li>update</li> 
+                            <li>retraction</li>
+                        </ul>
+                    </li>
+                    <!-- remark that the counter is relative to the event itself,
+                        which is what makes the individual VOEvent addressible. -->
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h3>EMObservation</h3>
+            <p> or EMBBEventLog </p>
+            <br/>
+            <div class='left' style='float:left;width:{{left.width}}'>
+                <ul>
+                    <li> event </li>
+                    <li> creation time </li>
+                    <li> issuer </li>
+                    <li> MOU group </li>
+                </ul>
+            </div>    
+            <div class='right' style='float:right;width:{{right.width}}'>
+                <ul>
+                    <li> ra, dec </li>
+                    <li> raWidth, decWidth </li>
+                    <li> N </li>
+                    <li> footprint set </li>
+                    <!-- remark that the EMFootprint model links to this, that these
+                        are actually the covering ra, dec values. -->
+                </ul>
+            </div>
+        </section>
+        <section> 
+            <h3>Representation of objects in GraceDB</h3>
+            <ul>
+                <li> <a href="https://gracedb.ligo.org/events/view/T125700" data-preview-link>HTML</a> </li>
+                <li> <a href="https://gracedb.ligo.org/apiweb/events/T125700" data-preview-link>JSON</a> </li>
+            </ul>
+        </section>
+        <!-- the EMBB -->
+        <section>
+            <section>
+            <h3>So then what is the EMBB?</h3>
+            <p> A special section within the GraceDB event page that displays 
+                information related to EM followup. For <a href="https://gracedb.ligo.org/events/view/T125700">example...</a></p>
+            </section>
+            <section>
+            <h3>Additional info for the EMBB?</h3>
+            <ul>
+                <li>Status of observation ("planned", "observed", ...) </li>
+                <li>Candidate EM counterparts</li>
+                <li>Free form comments</li>
+                <li>Auxiliary field for JSON-serialized content</li>
+                <li>....</li>
+            </ul>
+            <p> <a href="https://moe.phys.uwm.edu/branson/events/T125700">example...</a></p>
+            </section>
+
+            <!-- tutorial -->
+            <section>
+                <h3> (Schematic!) tutorial </h3>
+                <ul>
+                    <li> <a href="https://gracedb.ligo.org/options/manage_password">obtain a password</a> for robotic access </li>
+                    <li> put the username and password into a protected .netrc file
+                    </li>
+                <pre><code class="bash" data-trim>
+machine gracedb.ligo.org
+login your_username
+password your_password
+                </pre></code>
+                    <li>install virtualenv via 'pip install virtualenv' or:</li>
+                </ul>                     
+    
+                <pre><code class="bash" data-trim>
+$ curl -O https://pypi.python.org/packages/source/v/virtualenv/virtualenv-12.1.tar.gz
+$ tar xvfz virtualenv-12.1.tar.gz
+$ cd virtualenv-12.1
+$ [sudo] python setup.py install
+                </pre></code>
+            </section>
+            <section>
+                <ul>
+                    <li> create a new virtual environment and activate 
+                        <pre class="stretch"><code class="bash" data-trim> 
+$ cd /where/ever/you/want
+$ virtualenv gracedb_env --system-site-packages
+$ source gracedb_env/bin/activate
+                        </pre></code>
+                    </li>
+                    <li> install the development version of the GraceDB client
+                        <pre class="stretch"><code class="bash" data-trim> 
+$ pip install "ligo-gracedb>=1.18.dev0" 
+                        </pre></code>
+                    </li>
+                    <li> write to the EMBB using a simple python script... </li>
+                </ul>
+            </section>
+            <section>
+            <pre class="stretch"><code class="python" data-trim>
+from ligo.gracedb.rest import GraceDbBasic, HTTPError
+from datetime import datetime, timedelta
+
+service = 'https://gracedb.ligo.org/apibasic/'
+g = GraceDbBasic(service)
+
+graceid = 'T125700'
+raList = '45.0'
+raWidthList = '2.0'
+decList = '45.0'
+decWidthList = '2.0'
+startTimeList = datetime.now().isoformat()
+durationList = '100.0'
+
+try:
+    r = g.writeEMObservation(graceid, 'Test', raList, raWidthList,
+        decList, decWidthList, startTimeList, durationList)
+
+    print "Status = %d" % r.status
+    print "Content = %s" % r.json()
+except HTTPError, e:
+    print "Error = %s" % str(e)
+            </pre></code>
+            </section>
+            <section>
+                <ul>
+                    <li> Alternatively, use curl or wget </li>
+                </ul>
+                        <pre><code class="bash" data-trim>
+$ curl -X POST --netrc \
+>   --data "group=Test&raList=45&raWidthList=2&decList=45&decWidthList=2&startTimeList=2015-04-21T15:07:22&durationList=100" \
+>   https://gracedb.ligo.org/apibasic/events/T137114/emobservation/
+                        </pre></code>
+            </section>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- LVAlert (can remove?) -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>What about alerts?</h3>
+            <p>GraceDB uses LVAlert to send alerts to LVC followup robots.</p>
+            <ul>
+                <li> jabber server and client tools </li>
+                <li> pubsub model </li>        
+                <li> serialized objects in messages </li> 
+            </ul>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- LVC followup processors -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>LVC followup processors</h3>
+            <!-- remark again that there is no original science content 
+                generated by GraceDB -->
+            <!-- explain that these can be thought of as handlers that run 
+                in response to LVAlert messages. -->
+            <ul>
+                <li>Examples: approval processor, BAYESTAR, RAVEN, iDQ</li>
+                <li>Centralized robotic user: gracedb.processor</li>
+                <li>Centralized code repository: grinch</li>
+            </ul>
+            <!-- remark, grinch stands for: gravitational wave candidate handler-->
+        </section>
+        <section>
+            <pre class="stretch"><code class="python" data-trim>
+
+#!/usr/bin/env python
+from ligo.gracedb.rest import GraceDb
+from sys import stdin
+import subprocess
+import json
+
+streamdata = json.loads(stdin.read())
+graceid = streamdata['uid']
+
+if streamdata['alert_type'] == 'new':
+    # Create 'Preliminary VOEvent'
+    gracedb = GraceDb()
+    r = gracedb.createVOEvent(graceid, 'preliminary')
+    voevent = r.json()['text']
+
+    # Write VOEvent text to temporary file
+    tmpfile = open('/tmp/voevent.tmp',"w")
+    tmpfile.write(voevent)
+    tmpfile.close()
+
+    # Send it out with comet!
+    cmd = "comet-sendvo -p 5340 -f /tmp/voevent.tmp"
+    proc = subprocess.Popen(cmd, shell=True)
+
+            </pre></code>
+        </section> 
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- GCN -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>GCN/TAN</h3>
+            <img src="http://gcn.gsfc.nasa.gov/GCN.gif"></img>
+            <p><a href="http://gcn.gsfc.nasa.gov">gcn.gsfc.nasa.gov</a></p>
+            <p><a href="https://dcc.ligo.org/LIGO-T130099">GCN/LVC document</a></p>
+        </section>
+        <section>
+            <h3>GCN/TAN</h3>
+            <ul>
+                <li>Documents: Notices, Circulars, and Reports</li>
+                <li>Distribution methods: email, VTP</li>
+            </ul>
+            <p>Notices are the primary alert mechanism. They enable human
+                and robotic followup (see Leo's presentation).</p>
+        </section>
+        <section>
+            <pre class="stretch"><code class="xml" data-trim>
+<?xml version="1.0" ?>
+<voe:VOEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:voe="http://www.ivoa.net/xml/VOEvent/v2.0"
+    xsi:schemaLocation="http://www.ivoa.net/xml/VOEvent/v2.0 http://www.ivoa.net/xml/VOEvent/VOEvent-v2.0.xsd"
+     version="2.0" role="test" ivorn="ivo://gwnet/gcn_sender#T125700-3-Update">
+    <Who>
+        <Date>2015-04-18T19:08:40</Date>
+        <Author>
+            <contactName>LIGO Scientific Collaboration and Virgo Collaboration</contactName>
+        </Author>
+    </Who>
+    <What>
+        <Param name="GraceID" dataType="string" value="T125700" ucd="meta.id">
+            <Description>Identifier in GraceDB</Description>
+        </Param>
+        <Param name="AlertType" dataType="string" value="Update" ucd="meta.version" unit="">
+            <Description>VOEvent alert type</Description>
+        </Param>
+        <Param name="EventPage" dataType="string" value="https://gracedb.ligo.org/events/T125700" ucd="meta.ref.url">
+            <Description>Web page for evolving status of this candidate event</Description>
+        </Param>
+    </What>
+    <!-- snip -->
+</voe:voevent>
+            </pre></code>
+        <p> ... which takes us to the <a href="https://gracedb.ligo.org/events/T125700">event page.</a>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- Astronomy followup processors -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>Astronomy followup processors</h3>
+            <ul>
+                <li>See Leo's <a href="https://dcc.ligo.org/DocDB/0118/G1500442/006/ligo-virgo-emfollowup-tutorial.html">tutorial</a> next</li>
+                <li><a href="https://github.com/jdswinbank/Comet">Comet/Twisted</a></li>
+                <li>procmail</li>
+            </ul>
+        </section>
+
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <!-- Conclusions -->
+        <!-------------------------------------------------------------------->
+        <!-------------------------------------------------------------------->
+        <section>
+            <h3>Questions?</h3>
+            <img src="./annotations_flow.pdf"></img>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/head.min.js"></script>
+<script type="text/javascript">
+    /* Reveal.initialize(); */
+    //Reveal.initialize({ dependencies: [{src: 'bower-static/reveal.js/plugin/zoom.js', async: true }] });
+    Reveal.initialize({
+        dependencies: [
+            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js', async: true },
+
+            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js', async: true },
+
+// This might be good. See remotes.io
+//            { src: '../bower-static/reveal.js/plugin/remotes/remotes.js', async: true },
+
+            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/math/math.js', async: true }
+        ]
+    }); 
+
+
+</script>
+
+</body>
+</html>
