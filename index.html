@@ -60,8 +60,40 @@
         </section>
         <section>
             <h3 class="dark_background">What are compact objects?</h3>
-            $$ G_{\mu\nu} = 4\pi T_{\mu\nu} $$
+            <!-- table of compactnesses: BH, NS, WD, Sun, Earth -->
+            <!-- talk about formation scenarios -->
+            <!-- warning about geometrized units -->
+            <!-- remark that gravitational binding energy is O(M/R) -->
         </section>
+        <section>
+            <h3 class="dark_background">Binary compact object formation</h3>
+            <ul>
+                <li>field (a.k.a. primordial) binaries</li>
+                <li>dynamical capture binaries</li>
+            </li>
+            <p>Orbits decay on a timescale given by:</p>
+            
+        </section>
+
+        <section>
+            <h3 class="dark_background">Expected merger rates</h3>
+            <!-- should point out what constrains these rates: numbers of known
+                double NS systems -->
+        </section>
+
+        <section>
+            <h3 class="dark_background">Why concern oneself?</h3>
+            <p> Compact binaries probe interesting physics: </p>
+            <ul>
+                <li> general relativity in the strong field regime </li>
+                <li> high-energy astrophysics: GRBs, r-process, kilonovae </li>
+                <li> possibly even the NS equation of state </li>
+                <li> Multi-messenger astrophysics: gravitational waves,
+                        electromagnetic radiation, neutrinos </li>
+            </ul>
+            <!-- Maybe steal some graphics: LIGO, LSST, IceCube -->
+        </section>
+
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Phase I: Illinois -->
@@ -70,6 +102,52 @@
         <section>
             <h2 class="dark_background">Phase I: Magnetized collapse</h2>
         </section>
+        <section>
+            <h3 class="dark_background">Motivation for numerical simualtions</h3>
+            <ul>
+                <li> connecting the central engine back to observables </li>
+                <li> understanding the source population </li>
+                <li> understanding the spectrum of possible behaviors </li>
+                <!-- Remark: e.g., what outcomes are sensitive to initial conditions?
+                    What different sets of initial conditions result in degeracies
+                    in the observables? Could aid parameter estimation. -->
+            </li>
+        </section>
+        <!-- remark: These simulations necessarily involve a dynamically evolving
+            spacetime. But what do I mean by that? First, I'll introduce the 
+            cast of characters. -->
+        <section>
+            <h3 class="dark_background">The spacetime metric</h3>
+        </section>
+        <section>
+            <h3 class="dark_background">Curvature and dynamics</h3>
+            $$ G_{ab} = 4\pi T_{ab} $$
+        </section>
+        <section>
+            <h3 class="dark_background">The 3+1 splitting</h3>
+            <img class="dark_background" src="./images/foliation.pdf" width='200px'></img>
+            <p>Figure from E. Gourgoulhon.</p>
+        </section>
+        <section>
+            <h3 class="dark_background">The BSSN formulation</h3>
+            <!-- Remark: Will talk about another formulation, the 'generalized
+                harmonic formulation', later -->
+        </section>
+        <!-- Code development -->
+        <section>
+            <h3 class="dark_background">The GRMHD equations</h3>
+        </section>
+        <section>
+            <h3 class="dark_background">Overview of numerical methods</h3>
+            <!-- finite difference, HRSC, flux-constrained transport -->
+        </section>
+        <section>
+            <h3 class="dark_background">Summary of tests</h3>
+            <!-- list includes magnetized bondi, gw induced MHD waves, fishbone-moncrieff
+                torus evolution -->
+        </section>
+
+
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Phase II: Princeton -->
@@ -129,8 +207,26 @@
         </section>
         <section>
             <h3 class="dark_background">The RESTful interface</h3>
-            <!-- what is REST and ROA -->
-            <!-- mention self-documenting, browseable API -->
+            <p>REST (Roy Fielding, 2000) is a set of design criteria:</p>
+            <ol>
+                <li>addressibility - scoping information (which data) is in 
+                    the URI </li>
+                <li>uniform interface - action is specified by the HTTP method </li>
+                <li>connectedness - the data are inter-linked </li>
+                <li>statelessness  - each request/response cycle happens in complete 
+                    isolation </li>
+            </ol>
+            <p>"Resource Oriented Architecture" (ROA) is a specific example of a 
+                RESTful architecture, characterized by:</p>
+            <ul>
+                <li>resources</li>
+                <li>their URIs</li>
+                <li>their representations</li>
+                <li>the links between them</li>
+            </ul>
+            <p>(see Leonard Richardson & Sam Ruby, "RESTful Web Services" O'Reilly 
+            2007)</p>
+            <!-- mention self-documenting, browseable API? -->
         </section>
         <section>
             <h3 class="dark_background">A best-case scenario</h3>
