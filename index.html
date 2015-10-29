@@ -5,7 +5,9 @@
     <title>Compact Binary Mergers: From Modelling to Observation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css" id="theme">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css" id="theme"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css" id="theme"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/sky.css" id="theme">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css">
 
     <style>
@@ -13,17 +15,86 @@
             height: 200;
             width: 600;
         }
-        .reveal h2.dark_background { 
-            color: #ff9900;
-        }
-        .reveal h3.dark_background { 
-            color: #33ff33;
-        }
-        .reveal section img.dark_background {
+        .reveal section img.no_background {
             background: none;
             border: 0px;
             box-shadow: none;
         }
+
+        .reveal section img.white_background {
+            background-color: white;
+            padding: 10px;
+            border: 0px;
+            box-shadow: none;
+        }
+
+        .reveal section table.white_background {
+            background-color: white;
+        }
+
+        .reveal {
+            font-size: 30px;
+        }
+        .reveal section div.small_text {
+            font-size: 20px;
+        }
+
+        .reveal section.photo_background h2 {
+            color: white; 
+        }
+        .reveal section.photo_background p {
+            color: white; 
+        }
+        .reveal .photo_foreground_text {
+            position: relative;
+            bottom: -300px;
+        }
+
+        .reveal sup, .reveal sub {
+            font-size: 60%;
+        }
+
+        .rotated {
+            -webkit-transform: rotate(-90deg);
+        }
+
+        .reveal section table.figure_table td {
+            border: none;
+        }
+
+        .reveal section table.figure_table td.centered {
+            border: none;
+            text-align: center;
+        }
+
+        .reveal section img.double_row {
+            max-height: 220px;
+        }
+
+        .reveal section img.double_row.rotated {
+            max-width: 220px;
+        }
+
+        .reveal section tr.not_compact {
+            color: gray;
+        }   
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+          display: none;
+        }
+
+        .axis_label text {
+          font: 18px sans-serif;
+        }
+
+
     </style>
 
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -44,11 +115,11 @@
     <div class="slides">
         <!-- Title slide -->
         <section>
-            <h2 class="dark_background">Compact Binary Mergers: From Modelling to Observation</h2>
+            <h2>Compact Object Binaries: from Modelling to Observation</h2>
             <br/>
             <p>Branson Stephens </p>
             <p>University of Wisconsin-Milwaukee</p>
-            <p>October 2015</p>
+            <p>November 2015</p>
         </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
@@ -56,39 +127,59 @@
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <section>
-            <h2 class="dark_background">Introduction: Compact object binaries</h2>
+            <h2>Introduction</h2>
+            <!-- use binary pulsar fig as background? -->
         </section>
         <section>
-            <h3 class="dark_background">What are compact objects?</h3>
-            <!-- table of compactnesses: BH, NS, WD, Sun, Earth -->
-            <!-- talk about formation scenarios -->
-            <!-- warning about geometrized units -->
-            <!-- remark that gravitational binding energy is O(M/R) -->
+            <!-- XXX Make true compact objects a different color -->
+            <h3 >What are compact objects?</h3>
+            <table class="figure_table">
+                <tr> <th>Object</th> <th>M (M<sub>&#x2609;</sub>)</th> <th>R</th> <th>M/R</th> </tr>
+                <tr> <td>Cygnus X-1</td> <td>10</td> <td>29 km</td> <td>0.5</td> </tr>
+                <tr> <td>J0737-3039A</td> <td>1.34</td> <td>~12 km</td> <td>0.16</td> </tr>
+                <tr> <td>Sirius B</td> <td>1.05</td> <td>5.15 &times; 10<sup>3</sup> km</td> <td>3 &times; 10<sup>-4</sup></td> </tr>
+                <tr class="not_compact"> <td>Sun</td> <td>1.0</td> <td>6.96 &times; 10<sup>5</sup> km</td> <td>2 &times; 10<sup>-6</sup></td> </tr>
+                <tr class="not_compact"> <td>Earth</td> <td>3.0 &times; 10<sup>-6</sup></td> <td>6.37 &times; 10<sup>3</sup> km</td> <td>7 &times; 10<sup>-10</sup></td> </tr>
+                <tr class="not_compact"> <td>BCS</td> <td>3.36 &times; 10<sup>-29</sup></td> <td>24.7 cm</td> <td>2 &times; 10<sup>-25</sup></td> </tr>
+                <tr> <td></td> <td></td> <td></td> <td></td> </tr>
+            </table>
+            <p>Note: (Mostly) using geometrized units with G=c=1, such that <br/>
+            1 M<sub></sub> = 1.99 &times; 10<sup>33</sup> g = 1.47 km. </p>
         </section>
         <section>
-            <h3 class="dark_background">Binary compact object formation</h3>
+            <h3 >Binary compact object formation</h3>
             <ul>
                 <li>field (a.k.a. primordial) binaries</li>
                 <li>dynamical capture binaries</li>
             </li>
             <p>Orbits decay on a timescale given by:</p>
-            
-        </section>
+            $$ t_{\mathrm{merger}} \sim \frac{5}{256}\frac{c^5}{G^3}\frac{a^4}{M^2\mu} $$
+            <p>where $M = M_1 + M_2$ and $\mu = M_1 M_2 / (M_1 + M_2)$ (see
+            Shapiro and Teukolsky, 1983). For the double pulsar J0737-3039
+            with a period of 2.4 hours, $t_{\mathrm{merger}} \sim 83$ Myr.</p>
 
+        </section>
         <section>
-            <h3 class="dark_background">Expected merger rates</h3>
+            <h3 >Expected merger rates</h3>
             <!-- should point out what constrains these rates: numbers of known
                 double NS systems -->
+            <table class="figure_table">
+            <tr><th></th><th>Rate (Gpc<sup>-3</sup>yr<sup>-1</sup>)</th><th>aLIGO detections (yr<sup>-1</sup>)</th></tr>
+            <tr><td>NS-NS</td> <td class="centered">10<sup>3</sup></td> <td class="centered">40</td> </tr>
+            <tr><td>BH-NS</td> <td class="centered"> 30 </td> <td class="centered">10</td></tr>
+            <tr><td>BH-BH</td> <td class="centered"> 5</td> <td class="centered">20</td></tr>
+            </table>
+            <p>see the Observing Scenarios document. Rates for dynamically formed
+            binaries in globular and nuclear clusters are likely to be comparable            (Lee et al 2010) or even higher (Rodriguez 2015).</p>
         </section>
-
         <section>
-            <h3 class="dark_background">Why concern oneself?</h3>
+            <h3 >What makes these mergers intersting?</h3>
             <p> Compact binaries probe interesting physics: </p>
             <ul>
                 <li> general relativity in the strong field regime </li>
                 <li> high-energy astrophysics: GRBs, r-process, kilonovae </li>
                 <li> possibly even the NS equation of state </li>
-                <li> Multi-messenger astrophysics: gravitational waves,
+                <li> multi-messenger astrophysics: gravitational waves,
                         electromagnetic radiation, neutrinos </li>
             </ul>
             <!-- Maybe steal some graphics: LIGO, LSST, IceCube -->
@@ -99,11 +190,14 @@
         <!-- Phase I: Illinois -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
-            <h2 class="dark_background">Phase I: Magnetized collapse</h2>
+        <section class="photo_background" data-background="images/foellinger_uiuc.jpg">
+            <div class="photo_foreground_text">
+            <h2>Phase 1: Magnetized collapse</h2>
+            <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro, Masaru Shibata</p>
+            </div>
         </section>
         <section>
-            <h3 class="dark_background">Motivation for numerical simualtions</h3>
+            <h3 >Motivation for numerical simualtions</h3>
             <ul>
                 <li> connecting the central engine back to observables </li>
                 <li> understanding the source population </li>
@@ -117,71 +211,382 @@
             spacetime. But what do I mean by that? First, I'll introduce the 
             cast of characters. -->
         <section>
-            <h3 class="dark_background">The spacetime metric</h3>
+            <h3 >The Einstein Equations</h3>
+            $$ R_{ab} = 8\pi(T_{ab} - \frac{1}{2}g_{ab}T) $$
+            <p>where the Ricci tensor, \(R_{ab}\) encodes the change in a vector 
+            parallel-transported around a closed curve. It is calculated by 
+            taking derivatives of the "connection":</p>
+            $$ds^2 = g_{ab} dx^a dx^b$$
+            $$\Gamma^c{}_{ab} = \frac{1}{2}g^{cd}[g_{ad,b} + g_{bd,a} - g_{ab,d}] $$
+            $$R_{ab} = \Gamma^c{}_{ab,c} - \Gamma^c{}_{cb,a} + 
+                    \Gamma^d{}_{ab}\Gamma^{c}{}_{dc} -
+                    \Gamma^{d}{}_{cb}\Gamma^{c}{}_{da}$$ 
+            <!-- would be nice to have a figure link John Friedman's demonstrating
+                how Ricci is related to parallel transport -->
         </section>
         <section>
-            <h3 class="dark_background">Curvature and dynamics</h3>
-            $$ G_{ab} = 4\pi T_{ab} $$
-        </section>
-        <section>
-            <h3 class="dark_background">The 3+1 splitting</h3>
-            <img class="dark_background" src="./images/foliation.pdf" width='200px'></img>
-            <p>Figure from E. Gourgoulhon.</p>
-        </section>
-        <section>
-            <h3 class="dark_background">The BSSN formulation</h3>
-            <!-- Remark: Will talk about another formulation, the 'generalized
-                harmonic formulation', later -->
-        </section>
-        <!-- Code development -->
-        <section>
-            <h3 class="dark_background">The GRMHD equations</h3>
-        </section>
-        <section>
-            <h3 class="dark_background">Overview of numerical methods</h3>
-            <!-- finite difference, HRSC, flux-constrained transport -->
-        </section>
-        <section>
-            <h3 class="dark_background">Summary of tests</h3>
-            <!-- list includes magnetized bondi, gw induced MHD waves, fishbone-moncrieff
-                torus evolution -->
-        </section>
+            <h3 >The GRMHD equations</h3>
+            \begin{align}
+            \nabla_b F^{ab} &= 4\pi\mathcal{J}^a  &  \nabla_a(n u^a) &= 0 \\
+            \nabla_b {}^*F^{ab} &= 0              & \nabla_a T^a{}_i &= 0 \\
+            F^{ab}u_b &= 0                        & n_a \nabla_b T^{ab} &= 0 
+            \end{align}
 
+            <p> where </p>
+            $$T^{ab} = (\rho h + b^2)u^a u^b + (P + \frac{1}{2}b^2)g^{ab} - b^a b^b $$ 
+        </section>
+        <section>
+            <h3 >Overview of numerical methods</h3>
+            <ul>
+                <li>BSSN formulation: evolve 3-metric and extrinsic curvature
+                    instead of $g_{ab}$ </li>
+                <li>2nd order, finite differencing for spacetime</li>
+                <li>Godunov-type hydro scheme (HLL fluxes and PLM, PPM reconstruction </li>
+                <li>flux constrained transport (Toth, JCP <b>161</b>, 605, 2000) </li>
+                <li>black hole excision</li>
+                
+            </ul>
+        </section>
+        <section>
+            <h3 >Summary of tests</h3>
+            <ul>
+                <li>static and radially unstable NS evolution</li>
+                <li>MHD Riemann problems of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
+                <li>magnetized Bondi accretion</li>
+                <li>gravitational wave induced MHD waves</li>
+                <li>magnetized Fishbone-Moncrieff torus evolution</li>
+            </ul>
+        </section>
+        <!-- HMNS evolution: collapse phase -->
+        <section>
+            <h3 >An application problem: mangetized hypermassive neutron stars</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/initrho.pdf"></img></td>
+            <td><img class="no_background" src="./images/initB.c1.pdf"></img></td>
+            </tr>
+            </table>
+            <!-- Remark: I will be focusing on one of our application problems,
+                 but we also explored collapse of pop III stars to BHs and the
+                 evolution of magnetized PNSs. -->
+            <!-- remark: HMNSs form via BNS mergers ... -->
+            <!-- describe initial data models. Grab data from tables in paper.
+                 will be talking about A, C1, and C2. Explain this as a simple
+                 exploration fo EOS and initial magnetic field config effects. -->
+        </section>
+        <section>
+            <h3 >Principal magnetic effects</h3>
+            <table class="figure_table">
+                <tr>
+                    <td class="centered">magnetic braking</td>
+                    <td class="centered">magnetorotational instability</td>
+                </tr>
+                <tr>
+                    <td class="centered"><img class="no_background" src="./images/mag_braking.pdf" style="max-height: 300px;"></img></td>
+                    <td class="centered"><img class="no_background" src="./images/mag_rot_inst.pdf" style="max-height: 300px;"></img></td>
+                </tr>
+                <tr>
+                    <td class="centered"><div class="small_text">(see, e.g., Spriut A&amp;A <b>349</b>, 149, 1999)</div></td>
+                    <td class="centered"><div class="small_text">(see Balbus &amp; Hawley RMP <b>70</b>, 1, 1998)</div></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Evolution of Star A</h3>
+            <video controls>
+                <source src="./movies/star_a.mov" type="video/quicktime">    
+            </video>
+        </section>
+        <!-- remark: The differences between the two EOSs start to become apparent 
+             in the longer term disk evolution -->
+        <section>
+            <h3 >Evolutions in the Cowling approximation</h3>
+            <!-- this is an intro slide with the stats on Stars A, C1, C2. 
+                 when they collapsed, when we excised them, when we started 
+                 cowling, and how long the Cowling phase lasted in M and 
+                 disk rotation periods -->
+            <p>The Cowling approximation refers to evolving the fluid on a 
+            frozen spacetime background.<p>
+            
+            <table class="figure_table">
+                <tr> <th>Model</th> 
+                     <th>t<sub>ex</sub></th> 
+                     <th>t<sub>Cowling</sub></th> 
+                     <th>t<sub>end</sub></th> 
+                </tr>
+                <tr> <td>Star A</td> <td>2570</td> <td>2997</td> <td>4909</td> </tr>
+                <tr> <td>Star C</td> <td>941</td> <td>1221</td> <td>3097</td> </tr>
+            </table>
+            <p>(Note: 1000 M ~ 13 ms.)</p>
+        </section>
+        <section>
+            <h3 >Star A: Stiff EOS</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/A128190rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A178590rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A244990rv.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/A128190a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A178590a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A244990a.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Star C: Hybrid EOS</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1068600rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1134600rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1225600rv.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1068600a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1134600a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1225600a.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Star C: Funnel-wall outflows</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1_078200v.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1078200a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1_089000v.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1089000a.pdf"></img></td>
+            </tr>
+            </table>
+
+            <!-- This might be a good place to remark that the Blandford-Znajek
+                 process probably should be operating in the main part of the
+                 funnel. We don't see that because our handling of the hydro
+                 evolution in magnetically dominated regions is probably 
+                 inaccurate. -->
+        </section>
 
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Phase II: Princeton -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
-            <h2 class="dark_background">Phase II: Eccentric BH-NS mergers</h2>
+        <section class="photo_background" data-background="images/princeton_tigers.jpg">
+            <div class="photo_foreground_text">
+            <h2 >Phase II: Eccentric BH-NS mergers</h2>
+            <!-- Remark: the next phase involved work with with Frans Pretorius
+                and William East at Princeton University. These were the first
+                BH-NS simulations with significant eccentrity. -->
+            <p>Collaborators: William East and Frans Pretorius</p>
+            </div>
         </section>
         <section>
-            <h2 class="dark_background">Movie!</h2>
-            <video controls>
-                <source src="./movies/rho_5.mpg" type="video/mpg">    
+            <h3 >Why look at eccentric binaries?</h3>
+            <ul>
+                <li>possibly significant rates</li> <!-- XXX Need number here -->
+                <li>distinctive GW signals</li>
+                <li>potentially interesting EM counterparts</li>
+                <!-- Remark: emphasize great diversity of SGRB characteristics
+                    (short GRBs with "extended" emission) -->
+            </ul>
+            <!-- show picture of globular cluster here too -->
+        </section>
+        <section>
+            <h3 >GR code of Pretorius, et al.</h3>
+            <p>With coordinates chosen such that $\Box x^a = \mathcal{H}^a(t,x^i)$ (generalized harmonic), the
+                metric evolution equation becomes wavelike:</p>
+            $$ \frac{1}{2} g^{cd} g_{ab,cd} + g^{cd}{}_{(,a} g_{b)d,c}
+                + \mathcal{H}_{(a,b)} - \mathcal{H}_c \Gamma^c{}_{ab}
+                + \Gamma^c{}_{bd}\Gamma^d{}_{ac} = -8\pi(T_{ab} - \frac{1}{2}T)$$
+
+            <ul>
+                <li>Constraint violations propagate away and are damped</li>
+                <li>First successful BBH simulations (2005)</li>
+                <li>Existing parallel AMR framework</li>
+            </li>                
+        </section>
+        <section>
+            <h3 >Numerical techniques</h3>
+            <ul>
+                <li>4th order finite-difference metric evolution with 
+                    excision and constraint damping </li>
+                <li>Godunov-type finite volume hydro scheme</li>
+                <li>approximate Riemann solvers: HLL, Roe, Marquina</li>
+                <li>reconstruction of primitives: PLM, PPM, WENO5</li>
+                <li>flexible EOS specification ($\Gamma$-law, piecewise 
+                    polytropic, tabular, etc.)  </li>
+            </ul>
+        </section>
+        <section>
+            <h3 >PAMR/AMRD</h3>
+            <p>PAMR (Parallel Adaptive Mesh Refinement)</p>
+            <ul>
+                <li>defines data structures and grid hierarchy</li>
+                <li>handles communication between grids
+                    <ul>
+                        <li>syncing</li>
+                        <li>injection (restriction)</li>
+                        <li>interpolation (prolongation)</li>
+                        <li>C to V and V to C operations</li>
+                    </ul>
+                </li>
+                <li> distributes grids over multiple processors </li>
+                <li> handles I/O </li>
+            </ul>
+            <p>AMRD (Adaptive Mesh Refinement Driver)</p>
+            <ul>
+                <li>implements Berger-Oliger timestepping</li>
+                <li>couples with multigrid solvers for elliptic-hyperbolic systems</li>
+                <li>flags and clusters regions of the grid for refinement</li>
+                <li>implements Berger-Colella flux correction</li>
+            </ul>
+        </section>
+        <section>
+            <h3 >The Berger-Colella flux correction</h3>
+            <img class="no_background" src="./images/flux_correction.png" width='300px'>
+        </section>
+        <section>
+            <h3 >Code tests</h3>
+            <ul>
+                <li>1-D shocks following RAM paper</li>
+                <li>2D relativistic Riemann problem</li>
+                <li>Emery step</li>
+                <li>Boosted Bondi accretion</li>
+                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
+            </li>
+            <!-- XXX need to check this slide for completeness -->
+        </section>
+        <section>
+            <h3 >Problem setup</h3>
+            <p> <img class="no_background" src="./images/bhns_setup.png"></img>
+            A capture binary forms if 
+            $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
+            For Newtonian hyperbolic orbits, 
+            $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
+            We take $w = 1000$ km/s.
+            </p> 
+        </section>
+        <section>
+            <h3>Periastron radius dependence</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/rp5_merge.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp6_67_disk.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp6_81_tail.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/rp6_95_transfer.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp6_95_later.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp7_5_disk.pdf"></img></td>
+            </tr>
+            </table>
+            <!-- XXX Ugh... do we need a density scale? Say it in words? -->
+            <div id="rp_plot"></div>
+        </section>
+        <section>
+            <h3 >Below threshold: tidal disruption</h3>
+            <video height="550" controls>
+                <source src="./movies/rp6_81_b64_rho_z_alt.mpg" type="video/mpg">    
             </video>
+        </section>
+        <section>
+            <h3 >Above threshold: final orbit</h3>
+            <video height="550" controls>
+                <source src="./movies/rp6_95_b64_rho_z.mpg" type="video/mpg">    
+            </video>
+        </section>
+        <section>
+            <h3 >Waveforms</h3>
+            <table class="figure_table white_background">
+            <tr>
+            <td colspan="2"><img class="no_background double_row" src="./images/rp6_95_psi4_axis.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/rp7_5_gwave_compare_turner.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp10_gwave_compare_turner.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Studies of spin and EOS effects</h3>
+            <div id="spin_plot"></div>
+            <div id="eos_plot"></div>
+        </section>
+        <section>
+            <h3 >Tidally induced f-modes</h3>
+            <video height="550" controls>
+                <source src="./movies/rp6_95_b64_rho_z.mpg" type="video/mpg">    
+            </video>
+        </section>
+        <section>
+            <h3 >Tidally induced f-modes</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background" src="./images/fmode695.pdf"></img></td>
+            <td><img class="no_background" src="./images/fmode72H.pdf"></img></td>
+            </tr>
+            <tr>
+            <td>
+            $|C_{22}/C_{00}| \sim 0.02, 0.18$ at $r = 0.4, 0.8M$
+            </td>
+            <td>
+            $|C_{22}/C_{00}| \sim 0.03, 0.25$ at $r = 0.4, 0.8M$
+            </td>
+            </tr>
+            </table>
         </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Phase III: LIGO -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
-            <h2 class="dark_background">Phase III: LIGO</h2>
+        <section class="photo_background" data-background="images/kirc.jpg">
+            <div class="photo_foreground_text">
+            <h2 >Phase III: LIGO</h2>
+            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, and many others</p>
+            </div>
         </section>
         <section>
-            <h3 class="dark_background">What is LIGO?</h3>
-            <!-- basic intro to gw detection -->
+            <h3 >What is LIGO?</h3>
+            <img class="no_background" src="./images/ligo_sites.png">
         </section>
         <section>
-            <h3 class="dark_background">LIGO data analysis</h3>
+            <h3 >GW detection basics</h3>
+            <table>
+            <tr> <td>
+            <img class="no_background" src="./images/lrr_schematic_interferometer.png">
+            <p>Image from <a href="http://relativity.livingreviews.org/Articles/lrr-2011-5/fulltext.html">Pitkin et al., LRR, 2011</a>. Must measure
+            $$ h \sim \frac{\Delta L}{L} \sim 10^{-21} $$
+            </p>
+            </td>
+            <td>
+            <img class="white_background" src="./images/Fig_aligo_sensitivity.pdf">
+            <p>Figure from <a href="https://dcc.ligo.org/LIGO-P1200087-v23">LIGO Observing Scenarios</a> document.</p>
+            </td>
+            </tr>
+            </table>
+            <!-- might be a decent idea to show the noise curves from the 
+                    observing scenarios document. Talk about seismic,
+                    thermal, and shot noise. Also lines, and non-stationary
+                    glitches... violin modes. -->
+        </section>
+        <section>
+            <h3 >LIGO data analysis: Matched filtering</h3>
+            <img class="no_background" src="./images/inspiral.jpg">
+            <img class="no_background" src="./images/snr_timeseries.pdf">
+            <p>Inspiral waveform from A. Stuver, SNR timeseries plot from
+            P. Brady</p>
             <!-- why is it so hard? Buried in noise. --> 
-            <!-- unmodeled, time-frequency searches -->
-            <!-- matched filtering searches -->
         </section>
         <section>
-            <h3 class="dark_background">My role in LIGO</h3>
+            <h3 >LIGO data analysis: Unmodeled bursts</h3>
+            <img class="no_background" height="600" src="./images/bigdog_h1.png">
+            <p>Image from <a href="http://www.ligo.org/scientists/GW100916/spectrograms.html">GW100916</a> blind injection data release.</p>
+            <!-- cWB, Klimenko et al., http://arxiv.org/pdf/0802.3232v2.pdf -->
+        </section>
+        <section>
+            <h3 >My role in LIGO</h3>
             <ul>
                 <li>GraceDB: a gravitational wave candidate event database</li>
                 <li>LVAlert: the LIGO/Virgo Alert system</li>
@@ -195,18 +600,17 @@
             </ul>
         </section>
         <section>
-            <h3 class="dark_background">GraceDB in context</h3>
-            <img class="dark_background" src="./images/annotations_flow.pdf"></img>
+            <h3 >GraceDB in context</h3>
+            <img class="no_background" src="./images/annotations_flow_clear.pdf"></img> 
+            <!-- Talk through the best case scenario. Mention: BAYESTAR, RAVEN, iDQ -->
         </section>
         <section>
-            <h3 class="dark_background">How does GraceDB work?</h3>
-            <!-- screen shot of GraceDB -->
-            <!-- architecture... server, client -->
-            <!-- need to note, GraceDB isn't just for EM followup. Also used
-                 for pipeline testing and characterization -->
+            <h3 >How does GraceDB work?</h3>
+            <img class="no_background" src="./images/gracedb_architecture.pdf"></img>
+            <!-- show screen shot -->
         </section>
         <section>
-            <h3 class="dark_background">The RESTful interface</h3>
+            <h3 >The RESTful interface</h3>
             <p>REST (Roy Fielding, 2000) is a set of design criteria:</p>
             <ol>
                 <li>addressibility - scoping information (which data) is in 
@@ -217,24 +621,13 @@
                     isolation </li>
             </ol>
             <p>"Resource Oriented Architecture" (ROA) is a specific example of a 
-                RESTful architecture, characterized by:</p>
-            <ul>
-                <li>resources</li>
-                <li>their URIs</li>
-                <li>their representations</li>
-                <li>the links between them</li>
-            </ul>
-            <p>(see Leonard Richardson & Sam Ruby, "RESTful Web Services" O'Reilly 
-            2007)</p>
+                RESTful architecture, characterized by: resources, their URIs,
+                their representations, and the links between them (see Leonard 
+                Richardson & Sam Ruby, "RESTful Web Services" O'Reilly 2007). </p>
             <!-- mention self-documenting, browseable API? -->
         </section>
         <section>
-            <h3 class="dark_background">A best-case scenario</h3>
-            <!-- step through the sequence of events -->
-            <!-- mention: BAYESTAR, RAVEN, iDQ -->
-        </section>
-        <section>
-            <h3 class="dark_background">Authentication and authorization</h3>
+            <h3 >Authentication and authorization</h3>
             <p> GraceDB has several categories of users: </p>
             <ul>
                 <li>"super" users (e.g., the EM Followup group chairs, control room 
@@ -245,7 +638,7 @@
             </ul>
         </section>
         <section>
-            <h3 class="dark_background">A day in the life of the GraceDB maintainer (i.e., me)</h3>
+            <h3 >A day in the life of the GraceDB maintainer (i.e., me)</h3>
             <ul>
                 <li>general user support (how to use the client to accomplish science
                     tasks, how to construct queries, etc.) </li>
@@ -254,15 +647,16 @@
                 <li>updating tickets relating to bugs and feature requests</li>
                 <li>preparing new releases of the client tools</li>
             </ul>
+            <!-- XXX reduce these to one word -->
         </section>
 
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <!-- Conclusions -->
+        <!-- Final slide -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <section>
-            <h3 class="dark_background">Questions?</h3>
+            <h3 >Questions?</h3>
         </section>
 
         <!-------------------------------------------------------------------->
@@ -274,7 +668,198 @@
             <h1>Extra Slides</h1>
         </section>
         <section>
-            <h3 class="dark_background">Annotation: feedback on an event</h3>
+            <h3 >Expected merger rates: field binaries</h3>
+            <!-- should point out what constrains these rates: numbers of known
+                double NS systems -->
+            <table>
+            <tr><th></th><th>Rate (Gpc\(^{-3}\)yr\(^{-1}\))</th><th>aLIGO detections (yr\(^{-1}\))</th></tr>
+            <tr><td>NS-NS</td> <td> 61 (52)</td> <td>~ 1</td> </tr>
+            <tr><td>BH-NS</td> <td> 2.8 (3.0) </td> <td>~1 </td></tr>
+            <tr><td>BH-BH</td> <td> 28 (36) </td> <td>~ 100</td></tr>
+            </table>
+            <p>Dominik et al., ApJ 806, 263, 2015. </p>
+        </section>
+        <section>
+            <h3 >Expected merger rates: capture binaries</h3>
+            <!-- should point out what constrains these rates: numbers of known
+                double NS systems -->
+            <table>
+            <tr><th></th><th>Rate (Gpc\(^{-3}\)yr\(^{-1}\)) z=0.7, 0</th></tr>
+            <tr><td>NS-NS</td> <td> 58, 32</td> </tr>
+            <tr><td>BH-NS</td> <td> 34, 20 </td> </tr>
+            <tr><td>BH-BH</td> <td> 6, 3 </td> </tr>
+            </table>
+            <p> from Lee, Ramirez-Ruiz, van de Ven (ApJ, 720, 953 2010), cf. 
+                Rodriguez et al.  (arXiv:1505.00792), who predict 100 aLIGO 
+                detections per year </p>
+        </section>
+        <section>
+            <h3 >The 3+1 splitting</h3>
+            <table>
+            <tr>
+            <td> <img class="no_background" src="./images/foliation.pdf" width='300px'></img> 
+            <p>Figure from E. Gourgoulhon.</p></td>
+            <td>
+            $$\gamma_{ab} = g_{ab} + n_a n_b$$
+            <p>where</p>
+            $$ n_a n^a = -1, n^a = \left( \frac{1}{\alpha}, -\frac{\beta^i}{\alpha}\right), n_a = (-\alpha, 0,0,0) $$
+
+            $$ ds^2 = -\alpha^2 dt^2 + \gamma_{ij}(dx^i + \beta^i dt)(dx^j + \beta^j dt) $$
+            </td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >3+1 evolution</h3>
+            <!-- Remark: Will talk about another formulation, the 'generalized
+                harmonic formulation', later -->
+            
+            \begin{align}
+            \partial_t \gamma_{ij} =& - 2\alpha K_{ij} + \mathcal{L}_{\beta}\gamma_{ij} \\
+            
+            \partial_t K_{ij} =& - D_i D_j \alpha + \alpha(R_{ij} - 2K_{ik}K^k{}_{j}
+                + KK_{ij}) \\ 
+                & - 8\pi\alpha[S_{ij} - \frac{1}{2}\gamma_{ij}(S-\rho_S) 
+                + \mathcal{L}_{\beta}K_{ij} ] 
+            \end{align}
+            
+        </section>
+        <section>
+            <h3 >The BSSN formulation</h3>
+            <!-- Remark: Will talk about another formulation, the 'generalized
+                harmonic formulation', later -->
+            \begin{align}
+            \phi &= \frac{1}{12} ln[det(\gamma_{ij})] \\
+            \tilde{\gamma}_{ij} &= e^{-4\phi} \gamma_{ij} \\
+            K &= \gamma^{ij} K_{ij} \\
+            \tilde{A}_{ij} &= e^{-4\phi}(K_{ij} - \frac{1}{3}\gamma_{ij}K) \\
+            \tilde{\Gamma}^i &= - \gamma^{ij}{}_{,j} 
+            \end{align} 
+        </section>
+        <section>
+            <h3 >The stress-energy tensor</h3>
+            \begin{align}
+            T^{ab} &= T^{ab}_{fluid} + T^{ab}_{EM} \\
+            T^{ab}_{fluid} &= \rho h u^a u^b + g^{ab} P \\
+            T^{ab}_{EM} &= \frac{1}{4\pi} \left(F^{ac}F^b{}_{c} 
+                - \frac{1}{4}g^{ab}F_{cd}F^{cd} \right) \\
+                &= b^2 u^a u^b + \frac{1}{2}b^2 g^{ab} - b^a b^b  
+            \end{align}
+
+            <p>where $F^{ab} = n^a E^b - n^b E^a + n_c \epsilon^{cabd} B_d$  
+            and $b^a = B^a_{(u)} / \sqrt{4\pi}$. </p>
+        </section>
+        <section>
+            <h3 >The GRMHD equations: component form</h3>
+            \begin{align}
+            \partial_t D &= - \partial_i(v^i D) \\
+            \partial_t (\sqrt{-g}T^t{}_i) &= -\partial_j(\sqrt{-g}T^j{}_i) +
+                \frac{1}{2}\sqrt{-g}T^{ab}\partial_i g_{ab} \\
+
+            \partial_t (\alpha\sqrt{-g}T^{tt}) &= -\partial_i(\alpha\sqrt{-g}T^{ti})
+                - \sqrt{-g}T^{ab}\nabla_a n_b \\
+            \partial_t \tilde{B}^i &= -\partial_j(v^j \tilde{B}^i - v^i\tilde{B}^j)  \\
+            \partial_i \tilde{B}^i &= 0
+            \end{align}
+        </section>
+        <section>
+            <h3 >Evolution of BH and disk masses</h3>
+            <img class="no_background" src="./images/star_a_M_irr.pdf"></img>
+        </section>
+        <section>
+            <h3 >Feasibility of SGRB from neutrino emission?</h3>
+        </section>
+        <section>
+            <h3 >Behavior with varying seed field strength</h3>
+            <table><tr>
+            <td><img class="no_background" src="./images/star_a_scaling_with_B.pdf"></img></td>
+            <td><img class="no_background" src="./images/star_a_bxmax_growth.pdf"></img></td>
+            </tr>
+            </table>
+            <!-- remark: Note the complex behavior with regard to collapse time.
+            But the development of the turbulence appaers to be the
+            same in all cases. -->
+        </section>
+        <section>
+            <h3 >Stars C1 and C2: Seed-field effects</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/initrho.pdf"></img></td>
+            <td><img class="no_background" src="./images/initB.c1.pdf"></img></td>
+            <td><img class="no_background" src="./images/initB.c2.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Stars C1 and C2: Mass fluxes</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/excisionC.pdf"></img></td>
+            <td><img class="no_background" src="./images/outflux.pdf"></img></td>
+            </tr>
+            </table>
+            <!-- How long is 2000 M in seconds? -->
+        </section>
+        <section>
+            <h3 >Stars C1 and C2: Fluxes compared</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/fluxesC1.pdf"></img></td>
+            <td><img class="no_background" src="./images/fluxesC2.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Gauge conditions</h3>
+            <p>We usually take $H_i=0$ and </p>
+            $$ \Box \mathcal{H}_t = -\xi_1 \frac{\alpha - 1}{\alpha^\eta} 
+                + \xi_2 \mathcal{H}_{t,a}n^a $$
+            <p>where $\eta =6$, $\xi_1=100$, $\xi_2=10$.<p>
+        </section>
+        <section>
+            <h3 >Constraint damping</h3>
+            <!-- this is in the generalized harmonic evolution case -->
+        </section>
+        <section>
+            <h3 >Primitive variable inversion</h3>
+        </section>
+        <section>
+            <h3 >Studies of spin effects</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/rp5_ap5_rho.pdf"></img></td>
+            <td><img class="no_background" src="./images/rp5_5_ap5_rho.pdf"></img></td>
+            <td><img class="no_background" src="./images/rp8_125_am5_rho.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >$$r_p=5.5, a=+0.5$$</h3>
+            <video controls>
+                <source src="./movies/rp5_5_ap5_HB_rho_z.mpeg" type="video/mpg">    
+            </video>
+        </section>
+        <section>
+            <h3 >EOS effects study</h3>
+            <img class="no_background" src="./images/rp7_2H_rho.pdf"></img>
+            <!-- Plot at left becomes three columns, B, HB, 2H. -->
+            <!-- Flash up the EoS parameterization -->
+            <!-- XXX This slide needs some design work. -->
+        </section>
+
+
+        <section>
+            <h3 >$$r_p = 7$$ 2H EOS</h3>
+            <video controls>
+                <source src="./movies/rp7_2H_rho_z_far.mpeg" type="video/mpg">    
+            </video>
+        </section>
+        <section>
+            <h3 >Mass transfer in the 7, 2H case</h3>
+            <img class="no_background" src="./images/mass_transfer.pdf"></img>
+        </section>
+        <section>
+            <h3 >Annotation: feedback on an event</h3>
             <p> Annotations refer to anything uploaded after the initial event 
                 description. This includes: </p>
             <ul>
@@ -289,7 +874,7 @@
             </ul>
         </section>
         <section>
-            <h3 class="dark_background">The source: data analysis pipelines</h3>
+            <h3 >The source: data analysis pipelines</h3>
             <ul>
                 <li> cWB: Coherent Wave Burst</li>
                 <li> gstlal: gstreamer-basted pipeline with the LIGO Algorithm 
@@ -299,7 +884,7 @@
             </ul>
         </section>
         <section>
-            <h3 class="dark_background">Objects in GraceDB</h3>
+            <h3 >Objects in GraceDB</h3>
             <br/>
             <div class='left' style='float:left;width:{{left.width}}'>
                 <ul>
@@ -325,7 +910,7 @@
 
         <!-- Some selected models. Boring! -->
         <section>
-            <h3 class="dark_background">Event</h3>
+            <h3 >Event</h3>
             <br/>
             <div class='left' style='float:left;width:{{left.width}}'>
                 <ul>
@@ -347,7 +932,7 @@
 
         </section>
         <section>
-            <h3 class="dark_background">VOEvent</h3>
+            <h3 >VOEvent</h3>
             <br/>
             <div class='left' style='float:left;width:{{left.width}}'>
                 <ul>
@@ -374,7 +959,7 @@
             </div>
         </section>
         <section>
-            <h3 class="dark_background">More on the alerts</h3>
+            <h3 >More on the alerts</h3>
             <p>GraceDB uses LVAlert to send alerts to LVC followup robots.</p>
             <ul>
                 <li> jabber server and client tools </li>
@@ -383,13 +968,13 @@
             </ul>
         </section>
         <section>
-            <h3 class="dark_background">GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
+            <h3 >GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
             <img src="http://gcn.gsfc.nasa.gov/GCN.gif"></img>
             <p><a href="http://gcn.gsfc.nasa.gov">gcn.gsfc.nasa.gov</a></p>
             <p><a href="https://dcc.ligo.org/LIGO-T130099">GCN/LVC document</a></p>
         </section>
         <section>
-            <h3 class="dark_background">GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
+            <h3 >GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
             <ul>
                 <li>Documents: Notices, Circulars, and Reports</li>
                 <li>Distribution methods: email, VTP</li>
@@ -426,7 +1011,6 @@
             </pre></code>
         </section>
 
-
     </div>
 </div>
 
@@ -436,6 +1020,7 @@
     /* Reveal.initialize(); */
     //Reveal.initialize({ dependencies: [{src: 'bower-static/reveal.js/plugin/zoom.js', async: true }] });
     Reveal.initialize({
+        progress: false,
         math: {
             mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
             config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
@@ -450,10 +1035,311 @@
 // This might be good. See remotes.io
 //            { src: '../bower-static/reveal.js/plugin/remotes/remotes.js', async: true },
 
-            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/math/math.js', async: true }
+            { src: 'https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/math/math.js', async: true },
+            { src: 'plugins/reveal.js-menu/menu.js' }
         ]
     }); 
 
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
+<script>
+
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+// Data
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+
+var spins = [-0.5, 0, 0.5];
+
+var spin_rp_vals = [ 
+    {'spin': -0.5, 'rp': [5.0, 7.5, 8.13, 8.23, 8.44, 8.75, 10.0]}, 
+    {'spin': 0.0, 'rp': [5.0, 6.67, 6.81, 6.95, 7.22, 7.5, 8.75, 10.0, 12.5]}, 
+    {'spin': 0.5, 'rp': [5.0, 5.5, 6.0, 6.25, 7.50, 10.0]}, 
+
+];
+
+// Repackage the data
+var spin_rp_vals_new = [];
+
+spin_rp_vals.forEach(function(d) {
+    var spin = d.spin;
+    d.rp.forEach(function(rp) {
+        spin_rp_vals_new.push({'spin': spin, 'rp': rp})
+    });
+});
+
+var red = "#d62728";
+var yellow = "#1f77b4";
+var green = "#2ca02c";
+
+var spin_color = function(d, spin) {
+    if (spin > 0.0) {
+        if (d <= 5.0) {
+            return red;
+        } else if (d > 5.0 && d <= 6.25) {
+            return yellow;
+        } else {
+            return green;
+        }
+    } else if (spin == 0) {
+        if (d <= 6.81) {
+            return red;
+        } else if (d > 6.81 && d <= 7.5) {
+            return yellow;
+        } else {
+            return green;
+        }
+    } else {
+        if (d <= 8.13) {
+            return red;
+        } else if (d > 8.13 && d <= 8.28) {
+            return yellow;
+        } else {
+            return green;
+        }
+    }
+}
+
+eoses = ['B', 'HB', '2H'];
+
+var eos_rp_vals = [ 
+    {'eos': 'B', 'rp': [5.0, 6.25, 7.0, 7.5]}, 
+    {'eos': 'HB', 'rp': [5.0, 6.67, 6.81, 6.95, 7.22, 7.5, 8.75, 10.0, 12.5]}, 
+    {'eos': '2H', 'rp': [5.0, 6.75, 7.0, 7.25, 7.5]}, 
+
+];
+
+var eos_rp_vals_new = [];
+
+eos_rp_vals.forEach(function(d) {
+    var eos = d.eos;
+    d.rp.forEach(function(rp) {
+        eos_rp_vals_new.push({'eos': eos, 'rp': rp})
+    });
+});
+
+var eos_color = function(d, eos) {
+    if (eos=='B') {
+        if (d <= 6.25) {
+            return red;
+        } else if (d > 6.25 && d <= 7.0) {
+            return yellow;
+        } else {
+            return green;
+        }
+    } else if (eos=='HB') {
+        if (d <= 6.81) {
+            return red;
+        } else if (d > 6.81 && d <= 7.5) {
+            return yellow;
+        } else {
+            return green;
+        }
+    } else {
+        if (d <= 6.75) {
+            return red;
+        } else if (d > 6.75 && d <= 7.0) {
+            return yellow;
+        } else {
+            return green;
+        }
+    }
+}
+
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+// Constants
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+
+var margin = {top: 20, right: 50, bottom: 130, left: 160};
+var rp_margin = {top: 0, right: 100, bottom: 100, left: 20};
+var spin_margin = {top: 20, right: 50, bottom: 100, left: 160};
+var eos_margin = {top: 20, right: 50, bottom: 130, left: 160};
+var width = 800 - margin.left - margin.right;
+var rp_width = 800 - rp_margin.left - rp_margin.right;
+var spin_width = 800 - spin_margin.left - spin_margin.right;
+var eos_width = 800 - eos_margin.left - eos_margin.right;
+
+var rp_delta_y = 30;
+var delta_y = 40;
+var rect_height = 16;
+var rect_width = 6;
+
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+// Logic
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------
+// rp plot
+//-----------------------------------------------------------------------------
+var x = d3.scale.linear()
+    .range([0, rp_width])
+    .domain(d3.extent(spin_rp_vals_new, function(d) { return d.rp; }));
+
+var height = rp_delta_y;
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var svg = d3.select("#rp_plot").append("svg")
+    .attr("width", width + rp_margin.left + rp_margin.right)
+    .attr("height", height + rp_margin.top + rp_margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + rp_margin.left + "," + rp_margin.top + ")");
+
+var x_axis_yloc = height + rp_delta_y/2;
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + x_axis_yloc + ")")
+  .call(xAxis); 
+
+svg.selectAll("rect")
+  .data(spin_rp_vals[1].rp)
+.enter().append("rect")
+  .attr("x", function(d) { return x(d) - rect_width/2; })
+  .attr("y", height - rect_height/2)
+  .attr("width", rect_width)
+  .attr("height", rect_height)
+  .attr("fill", function(d) { return spin_color(d, 0.0); });
+
+svg.append("text")
+  .attr("class", "axis_label")
+  .attr("text-anchor", "middle")
+  .attr("transform", "translate(" + (rp_width/2) + "," + (height + 3*rp_delta_y) + ")")
+  .text("periastron radius")
+
+
+//-----------------------------------------------------------------------------
+// spin plot
+//-----------------------------------------------------------------------------
+var x = d3.scale.linear()
+    .range([0, spin_width])
+    .domain(d3.extent(spin_rp_vals_new, function(d) { return d.rp; }));
+
+var height = spins.length * delta_y
+
+// Calculate the height coordinates for the different pipelines.
+var y_range_values = [];
+spins.forEach(function(d, i) {
+  y_range_values.push(height - i*delta_y);
+});
+
+var y = d3.scale.ordinal()
+    .domain(spins).range(y_range_values);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("#spin_plot").append("svg")
+    .attr("width", spin_width + spin_margin.left + spin_margin.right)
+    .attr("height", height + spin_margin.top + spin_margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + spin_margin.left + "," + spin_margin.top + ")");
+
+var x_axis_yloc = height + delta_y/2;
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + x_axis_yloc + ")")
+  .call(xAxis); 
+
+var y_axis_xloc = - delta_y/2;
+svg.append("g")
+  .attr("class", "y axis")
+  .attr("transform", "translate(" + y_axis_xloc + ",0)")
+  .call(yAxis);
+
+svg.selectAll("rect")
+  .data(spin_rp_vals_new)
+.enter().append("rect")
+  .attr("x", function(d) { return x(d.rp) - rect_width/2; })
+  .attr("y", function(d) { return y(d.spin) - rect_height/2; })
+  .attr("width", rect_width)
+  .attr("height", rect_height)
+  .attr("fill", function(d) { return spin_color(d.rp, d.spin); });
+
+svg.append("text")
+  .attr("class", "axis_label")
+  .attr("text-anchor", "middle")
+  .attr("transform", "translate(" + (-3*delta_y) + "," + (spin_margin.top + height/2) + ")rotate(-90)")
+  .text("spin")
+
+//-----------------------------------------------------------------------------
+// eos plot
+//-----------------------------------------------------------------------------
+var x = d3.scale.linear()
+    .range([0, width])
+    .domain(d3.extent(eos_rp_vals_new, function(d) { return d.rp; }));
+
+var height = eoses.length * delta_y
+
+// Calculate the height coordinates for the different pipelines.
+var y_range_values = [];
+eoses.forEach(function(d, i) {
+  y_range_values.push(height - i*delta_y);
+});
+
+var y = d3.scale.ordinal()
+    .domain(eoses).range(y_range_values);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("#eos_plot").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var x_axis_yloc = height + delta_y/2;
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", "translate(0," + x_axis_yloc + ")")
+  .call(xAxis); 
+
+var y_axis_xloc = - delta_y/2;
+svg.append("g")
+  .attr("class", "y axis")
+  .attr("transform", "translate(" + y_axis_xloc + ",0)")
+  .call(yAxis);
+
+svg.selectAll("rect")
+  .data(eos_rp_vals_new)
+.enter().append("rect")
+  .attr("x", function(d) { return x(d.rp) - rect_width/2; })
+  .attr("y", function(d) { return y(d.eos) - rect_height/2; })
+  .attr("width", rect_width)
+  .attr("height", rect_height)
+  .attr("fill", function(d) { return eos_color(d.rp, d.eos); });
+
+svg.append("text")
+  .attr("class", "axis_label")
+  .attr("text-anchor", "middle")
+  .attr("transform", "translate(" + (width/2) + "," + (height + 3*delta_y) + ")")
+  .text("periastron radius")
+
+svg.append("text")
+  .attr("class", "axis_label")
+  .attr("text-anchor", "middle")
+  .attr("transform", "translate(" + (-3*delta_y) + "," + (margin.top + height/2) + ")rotate(-90)")
+  .text("EOS")
 
 </script>
 
