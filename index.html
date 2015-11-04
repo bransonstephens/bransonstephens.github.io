@@ -35,8 +35,13 @@
         .reveal {
             font-size: 30px;
         }
+
         .reveal section div.small_text {
             font-size: 20px;
+        }
+
+        .reveal section div.medium_text {
+            font-size: 24px;
         }
 
         .reveal section.photo_background h2 {
@@ -46,8 +51,11 @@
             color: white; 
         }
         .reveal .photo_foreground_text {
+            background-color: black;
+            opacity: 0.6;
             position: relative;
             bottom: -300px;
+            padding: 5;
         }
 
         .reveal sup, .reveal sub {
@@ -79,6 +87,19 @@
             color: gray;
         }   
 
+        .reveal section div.left_col {
+            display: inline;
+            float: left;
+            width: 45%;
+            /*padding-right: 10px;*/
+        }   
+        .reveal section div.right_col {
+            display: inline;
+            float: right;
+            width: 45%;
+            /*padding-left: 10px; */
+        }   
+
         .axis path,
         .axis line {
           fill: none;
@@ -90,10 +111,21 @@
           display: none;
         }
 
-        .axis_label text {
+        .reveal section g.axis text {
           font: 18px sans-serif;
         }
 
+
+        .line {
+          fill: none;
+          stroke: steelblue;
+          stroke-width: 1.5px;
+        }
+
+        .arrow{
+            stroke-width:4;
+            stroke:#000;
+        }
 
     </style>
 
@@ -192,7 +224,7 @@
         <!-------------------------------------------------------------------->
         <section class="photo_background" data-background="images/foellinger_uiuc.jpg">
             <div class="photo_foreground_text">
-            <h2>Phase 1: Magnetized collapse</h2>
+            <h2>Magnetized collapse</h2>
             <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro, Masaru Shibata</p>
             </div>
         </section>
@@ -374,7 +406,7 @@
         <!-------------------------------------------------------------------->
         <section class="photo_background" data-background="images/princeton_tigers.jpg">
             <div class="photo_foreground_text">
-            <h2 >Phase II: Eccentric BH-NS mergers</h2>
+            <h2>Eccentric BH-NS mergers</h2>
             <!-- Remark: the next phase involved work with with Frans Pretorius
                 and William East at Princeton University. These were the first
                 BH-NS simulations with significant eccentrity. -->
@@ -420,7 +452,9 @@
         </section>
         <section>
             <h3 >PAMR/AMRD</h3>
+            <div class="left_col">
             <p>PAMR (Parallel Adaptive Mesh Refinement)</p>
+            <div class="medium_text">
             <ul>
                 <li>defines data structures and grid hierarchy</li>
                 <li>handles communication between grids
@@ -434,13 +468,19 @@
                 <li> distributes grids over multiple processors </li>
                 <li> handles I/O </li>
             </ul>
+            </div>
+            </div>
+            <div class="right_col">
             <p>AMRD (Adaptive Mesh Refinement Driver)</p>
+            <div class="medium_text">
             <ul>
                 <li>implements Berger-Oliger timestepping</li>
                 <li>couples with multigrid solvers for elliptic-hyperbolic systems</li>
                 <li>flags and clusters regions of the grid for refinement</li>
                 <li>implements Berger-Colella flux correction</li>
             </ul>
+            </div>
+            </div>
         </section>
         <section>
             <h3 >The Berger-Colella flux correction</h3>
@@ -459,13 +499,16 @@
         </section>
         <section>
             <h3 >Problem setup</h3>
-            <p> <img class="no_background" src="./images/bhns_setup.png"></img>
+            <div style="width:20%;display:inline;float:left" id="setup_fig"></div>
+            <div style="width:70%;display:inline;float:right">
+            <p> 
             A capture binary forms if 
             $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
             For Newtonian hyperbolic orbits, 
             $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
             We take $w = 1000$ km/s.
             </p> 
+            </div>
         </section>
         <section>
             <h3>Periastron radius dependence</h3>
@@ -543,13 +586,16 @@
         <!-------------------------------------------------------------------->
         <section class="photo_background" data-background="images/kirc.jpg">
             <div class="photo_foreground_text">
-            <h2 >Phase III: LIGO</h2>
-            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, and many others</p>
+            <h2>LIGO Computing</h2>
+            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, and others</p>
             </div>
         </section>
         <section>
             <h3 >What is LIGO?</h3>
-            <img class="no_background" src="./images/ligo_sites.png">
+            <table> <tr>
+            <td> <img class="no_background" width="500" src="./images/lho_areal.jpg"> </td>
+            <td> <img class="no_background" width="500" src="./images/llo_areal.jpg"> </td>
+            </tr> </table> 
         </section>
         <section>
             <h3 >GW detection basics</h3>
@@ -573,11 +619,9 @@
         </section>
         <section>
             <h3 >LIGO data analysis: Matched filtering</h3>
-            <img class="no_background" src="./images/inspiral.jpg">
-            <img class="no_background" src="./images/snr_timeseries.pdf">
-            <p>Inspiral waveform from A. Stuver, SNR timeseries plot from
-            P. Brady</p>
+            <div id="matched_filter_container"></div>
             <!-- why is it so hard? Buried in noise. --> 
+            <!-- would be good to credit the losc tutorial here or provide a link -->
         </section>
         <section>
             <h3 >LIGO data analysis: Unmodeled bursts</h3>
@@ -1341,6 +1385,260 @@ svg.append("text")
   .attr("transform", "translate(" + (-3*delta_y) + "," + (margin.top + height/2) + ")rotate(-90)")
   .text("EOS")
 
+</script>
+
+
+
+
+<script>
+
+var width = 350;
+var height = 200;
+
+var plt_info = [ 
+  {
+    "data_file": "data/dattime.csv",
+    "margin": {top: 20, left: 75},
+    "y_prop": "data",
+    "y_label": "data", 
+    "x_label": "time", 
+    "tick_format": "e",
+  },
+  {
+    "data_file": "data/tmptime.csv",
+    "margin": {top: 320, left: 75},
+    "y_prop": "template",
+    "y_label" : "template",
+    "x_label": "time", 
+    "tick_format": "e",
+  },
+  {
+    "data_file": "data/snrtime.csv",
+    "margin": {top: 170, left: 575},
+    "y_prop": "SNR",
+    "y_label" : "SNR",
+    "x_label": "offset time", 
+    "tick_format": "f",
+  }
+];
+
+var svg = d3.select("#matched_filter_container").append("svg")
+    .attr("width", 960)
+    .attr("height", 860);
+
+plt_info.forEach( function(pi) {
+
+    var data_file = pi.data_file;
+    var margin = pi.margin;
+    var y_prop = pi.y_prop;
+    var y_label = pi.y_label;
+    var x_label = pi.x_label;
+    var tick_format = pi.tick_format;
+    var height = 200;
+    var width = 350;
+
+    var x = d3.scale.linear()
+        .range([0, width]);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickFormat(d3.format(tick_format));
+
+    var line = d3.svg.line()
+        .x(function(d) { return x(d.time); })
+        .y(function(d) { return y(d[y_prop]); });
+
+    var group = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.csv(data_file, function(error, data) {
+      if (error) throw error;
+
+      data.forEach(function(d) {
+        d.time = +d.time;;
+        d[y_prop] = +d[y_prop];
+      });
+
+      x.domain(d3.extent(data, function(d) { return d.time; }));
+      y.domain(d3.extent(data, function(d) { return d[y_prop]; }));
+
+      group.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + (height + 10) + ")")
+          .call(xAxis)
+        .append("text")
+          .attr("x", 175)
+          .attr("y", 50)
+          .style("text-anchor", "middle")
+          .text(x_label);
+
+      group.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text(y_label);
+
+      group.append("path")
+          .datum(data)
+          .attr("class", "line")
+          .attr("d", line);
+    });
+
+    svg.append("defs").append("marker")
+      .attr("id", "arrowhead")
+      .attr("refX", 3) /*must be smarter way to calculate shift*/
+      .attr("refY", 2)
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 4)
+      .attr("orient", "auto")
+      .append("path")
+        .attr("d", "M 0,0 V 4 L6,2 Z"); //this is actual shape for arrowhead
+
+    svg.append('line')
+      .attr("class", "arrow")
+      .attr("marker-end", "url(#arrowhead)")
+      .attr("orientation", "right")
+      .attr("x1",455)
+      .attr("x2",495)
+      .attr("y1",280)
+      .attr("y2",280)
+
+});
+
+</script>
+
+<!-- the following is for the little setup cartoon. -->
+<script>
+
+var margin = {top: 20, right: 20, bottom: 20, left: 20};
+var width = 300 - margin.left - margin.right;
+var height = 600 - margin.top - margin.bottom;
+
+var y_bh = height * 0.15;
+var y_ns = height * 0.85;
+
+var x_bh = width * 0.25;
+var x_ns = width * 0.75;
+
+// define a radius scale
+var M = 4;
+var r_bh = 8*M;
+var r_ns = Math.round(5.86*M);
+
+var v_length = height / 20;
+var delta_y = 4;
+
+var svg = d3.select("#setup_fig").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.append("circle")
+    .attr("cx", x_bh)
+    .attr("cy", y_bh)
+    .attr("r", r_bh)
+    .attr("fill", "black")
+    
+svg.append("circle")
+    .attr("cx", x_ns)
+    .attr("cy", y_ns)
+    .attr("r", r_ns)
+    .attr("fill", "steelblue")
+
+svg.append("defs").append("marker")
+    .attr("id", "black_arrowhead")
+    .attr("refX", 3) /*must be smarter way to calculate shift*/
+    .attr("refY", 2)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 4)
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M 0,0 V 4 L6,2 Z"); //this is actual shape for arrowhead
+
+svg.append("defs").append("marker")
+    .attr("id", "blue_arrowhead")
+    .attr("refX", 3) /*must be smarter way to calculate shift*/
+    .attr("refY", 2)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 4)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M 0,0 V 4 L6,2 Z") //this is actual shape for arrowhead
+    .attr("fill", "steelblue");
+
+svg.append('line')
+    .attr("stroke", "black")
+    .attr("stroke-width", 4)
+    .attr("marker-end", "url(#black_arrowhead)")
+    .attr("x1", x_bh)
+    .attr("x2", x_bh)
+    .attr("y1", y_bh + r_bh + delta_y )
+    .attr("y2", y_bh + r_bh + delta_y + v_length)
+
+svg.append('line')
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 4)
+    .attr("marker-end", "url(#blue_arrowhead)")
+    .attr("orientation", "auto")
+    .attr("x1", x_ns)
+    .attr("x2", x_ns)
+    .attr("y1", y_ns - r_ns - delta_y)
+    .attr("y2", y_ns - r_ns - delta_y - 4.0*v_length)
+
+// The line signifying the impact parameter
+svg.append('line')
+    .attr("stroke", "black")
+    .attr("stroke-width", 2)
+    .attr("x1", x_bh)
+    .attr("x2", x_ns)
+    .attr("y1", y_bh - 2*r_bh)
+    .attr("y2", y_bh - 2*r_bh)
+
+// Make the ticks
+svg.append('line')
+    .attr("stroke", "black")
+    .attr("stroke-width", 2)
+    .attr("x1", x_bh)
+    .attr("x2", x_bh)
+    .attr("y1", y_bh - 2*r_bh - delta_y)
+    .attr("y2", y_bh - 2*r_bh + delta_y)
+svg.append('line')
+    .attr("stroke", "black")
+    .attr("stroke-width", 2)
+    .attr("x1", x_ns)
+    .attr("x2", x_ns)
+    .attr("y1", y_bh - 2*r_bh - delta_y)
+    .attr("y2", y_bh - 2*r_bh + delta_y)
+
+svg.append("text")
+    .attr("class", "label_text")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(" + (x_bh - 1.8*r_bh) + "," + y_bh + ")")
+    .text("4M") 
+svg.append("text")
+    .attr("class", "label_text")
+    .attr("text-anchor", "middle")
+    .attr("fill", "steelblue")
+    .attr("transform", "translate(" + (x_ns + 1.8*r_ns) + "," + y_ns + ")")
+    .text("M") 
+svg.append("text")
+    .attr("class", "label_text")
+    .attr("text-anchor", "middle")
+    .attr("transform", "translate(" + ((x_bh + x_ns)/2.0) + "," + (y_bh - 2*r_bh - 2.0*delta_y)  + ")")
+    .text("b") 
 </script>
 
 </body>
