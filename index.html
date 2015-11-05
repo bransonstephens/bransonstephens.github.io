@@ -428,10 +428,10 @@
             <h3 >GR code of Pretorius, et al.</h3>
             <p>With coordinates chosen such that $\Box x^a = \mathcal{H}^a(t,x^i)$ (generalized harmonic), the
                 metric evolution equation becomes wavelike:</p>
+            
             $$ \frac{1}{2} g^{cd} g_{ab,cd} + g^{cd}{}_{(,a} g_{b)d,c}
-                + \mathcal{H}_{(a,b)} - \mathcal{H}_c \Gamma^c{}_{ab}
-                + \Gamma^c{}_{bd}\Gamma^d{}_{ac} = -8\pi(T_{ab} - \frac{1}{2}T)$$
-
+                + \mathcal{H}_{(a,b)} - \mathcal{H}_c \Gamma^c{}_{ab} 
+                + \Gamma^c{}_{bd}\Gamma^d{}_{ac} = -8\pi(T_{ab} - \frac{1}{2}T)  $$
             <ul>
                 <li>Constraint violations propagate away and are damped</li>
                 <li>First successful BBH simulations (2005)</li>
@@ -715,11 +715,12 @@
             <h3 >Expected merger rates: field binaries</h3>
             <!-- should point out what constrains these rates: numbers of known
                 double NS systems -->
-            <table>
-            <tr><th></th><th>Rate (Gpc\(^{-3}\)yr\(^{-1}\))</th><th>aLIGO detections (yr\(^{-1}\))</th></tr>
-            <tr><td>NS-NS</td> <td> 61 (52)</td> <td>~ 1</td> </tr>
-            <tr><td>BH-NS</td> <td> 2.8 (3.0) </td> <td>~1 </td></tr>
-            <tr><td>BH-BH</td> <td> 28 (36) </td> <td>~ 100</td></tr>
+            <table class="figure_table">
+            <tr><th></th><th>Rate (Gpc<sup>-3</sup>yr<sup>-1</sup>)</th>
+                <th>aLIGO detections (yr<sup>-1</sup>)</th></tr>
+            <tr><td>NS-NS</td> <td class="centered"> 61 (52)</td> <td class="centered">~ 1</td> </tr>
+            <tr><td>BH-NS</td> <td class="centered"> 2.8 (3.0) </td> <td class="centered">~1 </td></tr>
+            <tr><td>BH-BH</td> <td class="centered"> 28 (36) </td> <td class="centered">~ 100</td></tr>
             </table>
             <p>Dominik et al., ApJ 806, 263, 2015. </p>
         </section>
@@ -727,11 +728,11 @@
             <h3 >Expected merger rates: capture binaries</h3>
             <!-- should point out what constrains these rates: numbers of known
                 double NS systems -->
-            <table>
+            <table class="figure_table">
             <tr><th></th><th>Rate (Gpc\(^{-3}\)yr\(^{-1}\)) z=0.7, 0</th></tr>
-            <tr><td>NS-NS</td> <td> 58, 32</td> </tr>
-            <tr><td>BH-NS</td> <td> 34, 20 </td> </tr>
-            <tr><td>BH-BH</td> <td> 6, 3 </td> </tr>
+            <tr><td>NS-NS</td> <td class="centered"> 58, 32</td> </tr>
+            <tr><td>BH-NS</td> <td class="centered"> 34, 20 </td> </tr>
+            <tr><td>BH-BH</td> <td class="centered"> 6, 3 </td> </tr>
             </table>
             <p> from Lee, Ramirez-Ruiz, van de Ven (ApJ, 720, 953 2010), cf. 
                 Rodriguez et al.  (arXiv:1505.00792), who predict 100 aLIGO 
@@ -739,19 +740,19 @@
         </section>
         <section>
             <h3 >The 3+1 splitting</h3>
-            <table>
-            <tr>
-            <td> <img class="no_background" src="./images/foliation.pdf" width='300px'></img> 
-            <p>Figure from E. Gourgoulhon.</p></td>
-            <td>
+            <div style="display:inline-block;float:left;width=30%">
+            <img class="no_background" src="./images/foliation.pdf" width='300px'></img> 
+            <p><div class="small_text">Figure from E. Gourgoulhon.</div></p>
+            </div>
+
+            <div style="display:inline-block;float:right;width=60%">
+            <br/><br/>
             $$\gamma_{ab} = g_{ab} + n_a n_b$$
             <p>where</p>
             $$ n_a n^a = -1, n^a = \left( \frac{1}{\alpha}, -\frac{\beta^i}{\alpha}\right), n_a = (-\alpha, 0,0,0) $$
 
             $$ ds^2 = -\alpha^2 dt^2 + \gamma_{ij}(dx^i + \beta^i dt)(dx^j + \beta^j dt) $$
-            </td>
-            </tr>
-            </table>
+            </div>
         </section>
         <section>
             <h3 >3+1 evolution</h3>
@@ -806,13 +807,11 @@
             \partial_i \tilde{B}^i &= 0
             \end{align}
         </section>
-        <section>
-            <h3 >Evolution of BH and disk masses</h3>
-            <img class="no_background" src="./images/star_a_M_irr.pdf"></img>
-        </section>
+        <!--
         <section>
             <h3 >Feasibility of SGRB from neutrino emission?</h3>
         </section>
+        -->
         <section>
             <h3 >Behavior with varying seed field strength</h3>
             <table><tr>
@@ -863,20 +862,25 @@
         <section>
             <h3 >Constraint damping</h3>
             <!-- this is in the generalized harmonic evolution case -->
+            <p>The definition of the gauge source functions provides a set of constraints:</p>
+                $$ C^a = \mathcal{H}^a - \Box x^a $$
+            <p>To improve stability, we add a term to the Einstein equations proportional to
+                the constraint: </p>
+                \begin{align}
+                 \frac{1}{2} g^{cd} g_{ab,cd} + g^{cd}{}_{(,a} g_{b)d,c}
+                    + \mathcal{H}_{(a,b)} &- \mathcal{H}_c \Gamma^c{}_{ab}
+                    + \Gamma^c{}_{bd}\Gamma^d{}_{ac}  \\
+                    + \kappa \left(n_{(a}C_{b)} - \frac{1}{2}g_{ab}n^c C_c\right)
+                    &= -8\pi(T_{ab} - \frac{1}{2}T)
+               \end{align} 
+            <p>In this extended system, the constraints effectively obey a damped wave equation:</p>
+                $$ \Box C^a = -R^a{}_b C^b + 2\kappa \nabla_b \left[n^{(b}C^{a)}\right] $$
         </section>
+        <!--
         <section>
             <h3 >Primitive variable inversion</h3>
         </section>
-        <section>
-            <h3 >Studies of spin effects</h3>
-            <table>
-            <tr>
-            <td><img class="no_background" src="./images/rp5_ap5_rho.pdf"></img></td>
-            <td><img class="no_background" src="./images/rp5_5_ap5_rho.pdf"></img></td>
-            <td><img class="no_background" src="./images/rp8_125_am5_rho.pdf"></img></td>
-            </tr>
-            </table>
-        </section>
+        -->
         <section>
             <h3 >$$r_p=5.5, a=+0.5$$</h3>
             <video controls>
@@ -884,16 +888,7 @@
             </video>
         </section>
         <section>
-            <h3 >EOS effects study</h3>
-            <img class="no_background" src="./images/rp7_2H_rho.pdf"></img>
-            <!-- Plot at left becomes three columns, B, HB, 2H. -->
-            <!-- Flash up the EoS parameterization -->
-            <!-- XXX This slide needs some design work. -->
-        </section>
-
-
-        <section>
-            <h3 >$$r_p = 7$$ 2H EOS</h3>
+            <h3 >$r_p = 7$ 2H EOS</h3>
             <video controls>
                 <source src="./movies/rp7_2H_rho_z_far.mpeg" type="video/mpg">    
             </video>
@@ -928,133 +923,11 @@
             </ul>
         </section>
         <section>
-            <h3 >Objects in GraceDB</h3>
-            <br/>
-            <div class='left' style='float:left;width:{{left.width}}'>
-                <ul>
-                    <li> Event
-                        <ul> 
-                            <li> CoincInspiralEvent </li>
-                            <li> MultiBurstEvent </li>
-                            <li> GrbEvent </li>
-                        </ul>
-                    </li>
-                </ul> 
-            </div>    
-            <div class='right' style='float:right;width:{{right.width}}'>
-                <ul>
-                    <li> EventLog </li>
-                    <li> Label </li>
-                    <li> Tag </li>
-                    <li> VOEvent </li>
-                    <li> EMObservation (proposed) </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Some selected models. Boring! -->
-        <section>
-            <h3 >Event</h3>
-            <br/>
-            <div class='left' style='float:left;width:{{left.width}}'>
-                <ul>
-                    <li> submitter </li>
-                    <li> creation time </li>
-                    <li> working group </li>
-                    <li> pipeline </li>
-                    <li> search activity </li>
-                </ul>
-            </div>    
-            <div class='right' style='float:right;width:{{right.width}}'>
-                <ul>
-                    <li> instruments </li>
-                    <li> far </li>
-                    <li> likelihood </li>
-                    <li> gpstime </li>
-                </ul>
-            </div>
-
-        </section>
-        <section>
-            <h3 >VOEvent</h3>
-            <br/>
-            <div class='left' style='float:left;width:{{left.width}}'>
-                <ul>
-                    <li> event </li>
-                    <li> creation time </li>
-                    <li> issuer </li>
-                    <li> ivorn </li>
-                    <li> N </li> 
-                </ul>
-            </div>    
-            <div class='right' style='float:right;width:{{right.width}}'>
-                <ul>
-                    <li> type 
-                        <ul>
-                            <li>preliminary </li>
-                            <li>initial</li>
-                            <li>update</li> 
-                            <li>retraction</li>
-                        </ul>
-                    </li>
-                    <!-- remark that the counter is relative to the event itself,
-                        which is what makes the individual VOEvent addressible. -->
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h3 >More on the alerts</h3>
-            <p>GraceDB uses LVAlert to send alerts to LVC followup robots.</p>
-            <ul>
-                <li> jabber server and client tools </li>
-                <li> pubsub model </li>        
-                <li> serialized objects in messages </li> 
-            </ul>
-        </section>
-        <section>
             <h3 >GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
             <img src="http://gcn.gsfc.nasa.gov/GCN.gif"></img>
             <p><a href="http://gcn.gsfc.nasa.gov">gcn.gsfc.nasa.gov</a></p>
             <p><a href="https://dcc.ligo.org/LIGO-T130099">GCN/LVC document</a></p>
         </section>
-        <section>
-            <h3 >GCN/TAN: Alerts outside of LIGO/VIRGO</h3>
-            <ul>
-                <li>Documents: Notices, Circulars, and Reports</li>
-                <li>Distribution methods: email, VTP</li>
-            </ul>
-            <p>Notices are the primary alert mechanism. They enable human
-                and robotic followup.</p>
-        </section>
-        <section>
-            <pre class="stretch"><code class="xml" data-trim>
-<?xml version="1.0" ?>
-<voe:VOEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:voe="http://www.ivoa.net/xml/VOEvent/v2.0"
-    xsi:schemaLocation="http://www.ivoa.net/xml/VOEvent/v2.0 http://www.ivoa.net/xml/VOEvent/VOEvent-v2.0.xsd"
-     version="2.0" role="test" ivorn="ivo://gwnet/gcn_sender#T125700-3-Update">
-    <Who>
-        <Date>2015-04-18T19:08:40</Date>
-        <Author>
-            <contactName>LIGO Scientific Collaboration and Virgo Collaboration</contactName>
-        </Author>
-    </Who>
-    <What>
-        <Param name="GraceID" dataType="string" value="T125700" ucd="meta.id">
-            <Description>Identifier in GraceDB</Description>
-        </Param>
-        <Param name="AlertType" dataType="string" value="Update" ucd="meta.version" unit="">
-            <Description>VOEvent alert type</Description>
-        </Param>
-        <Param name="EventPage" dataType="string" value="https://gracedb.ligo.org/events/T125700" ucd="meta.ref.url">
-            <Description>Web page for evolving status of this candidate event</Description>
-        </Param>
-    </What>
-    <!-- snip -->
-</voe:voevent>
-            </pre></code>
-        </section>
-
     </div>
 </div>
 
