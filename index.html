@@ -21,6 +21,11 @@
             box-shadow: none;
         }
 
+
+        .reveal section p {
+            text-align: left;
+        }
+
         .reveal section img.white_background {
             background-color: white;
             padding: 10px;
@@ -150,16 +155,19 @@
             <h2>Compact Object Binaries: from Modelling to Observation</h2>
             <br/>
             <p>Branson Stephens </p>
-            <p>University of Wisconsin-Milwaukee</p>
+            <p>Leonard E Parker Center for Gravitation and Cosmology</p>
             <p>November 2015</p>
+            <img class="no_background" src="http://www.gravity.phys.uwm.edu/Images/CGCARevTrs.png" alt="CGCA Logo" height="100px">
         </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Introduction -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
+        <section class="photo_background" data-background="images/messier15.jpg">
+            <div class="photo_foreground_text">
             <h2>Introduction</h2>
+            </div>
             <!-- use binary pulsar fig as background? -->
         </section>
         <section>
@@ -202,11 +210,11 @@
             <tr><td>BH-BH</td> <td class="centered"> 5</td> <td class="centered">20</td></tr>
             </table>
             <p>see the Observing Scenarios document. Rates for dynamically formed
-            binaries in globular and nuclear clusters are likely to be comparable            (Lee et al 2010) or even higher (Rodriguez 2015).</p>
+            binaries in globular and nuclear clusters are likely to be comparable            (Lee et al. 2010) or even higher (Rodriguez 2015).</p>
         </section>
         <section>
             <h3 >What makes these mergers intersting?</h3>
-            <p> Compact binaries probe interesting physics: </p>
+            <!-- <p> Compact binaries probe interesting physics: </p> -->
             <ul>
                 <li> general relativity in the strong field regime </li>
                 <li> high-energy astrophysics: GRBs, r-process, kilonovae </li>
@@ -247,7 +255,7 @@
             $$ R_{ab} = 8\pi(T_{ab} - \frac{1}{2}g_{ab}T) $$
             <p>where the Ricci tensor, \(R_{ab}\) encodes the change in a vector 
             parallel-transported around a closed curve. It is calculated by 
-            taking derivatives of the "connection":</p>
+            taking derivatives of the <i>connection</i>:</p>
             $$ds^2 = g_{ab} dx^a dx^b$$
             $$\Gamma^c{}_{ab} = \frac{1}{2}g^{cd}[g_{ad,b} + g_{bd,a} - g_{ab,d}] $$
             $$R_{ab} = \Gamma^c{}_{ab,c} - \Gamma^c{}_{cb,a} + 
@@ -263,8 +271,8 @@
             \nabla_b {}^*F^{ab} &= 0              & \nabla_a T^a{}_i &= 0 \\
             F^{ab}u_b &= 0                        & n_a \nabla_b T^{ab} &= 0 
             \end{align}
+            <br/>
 
-            <p> where </p>
             $$T^{ab} = (\rho h + b^2)u^a u^b + (P + \frac{1}{2}b^2)g^{ab} - b^a b^b $$ 
         </section>
         <section>
@@ -273,20 +281,10 @@
                 <li>BSSN formulation: evolve 3-metric and extrinsic curvature
                     instead of $g_{ab}$ </li>
                 <li>2nd order, finite differencing for spacetime</li>
-                <li>Godunov-type hydro scheme (HLL fluxes and PLM, PPM reconstruction </li>
+                <li>Godunov-type hydro scheme (HLL fluxes and PLM, PPM reconstruction) </li>
                 <li>flux constrained transport (Toth, JCP <b>161</b>, 605, 2000) </li>
                 <li>black hole excision</li>
                 
-            </ul>
-        </section>
-        <section>
-            <h3 >Summary of tests</h3>
-            <ul>
-                <li>static and radially unstable NS evolution</li>
-                <li>MHD Riemann problems of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
-                <li>magnetized Bondi accretion</li>
-                <li>gravitational wave induced MHD waves</li>
-                <li>magnetized Fishbone-Moncrieff torus evolution</li>
             </ul>
         </section>
         <!-- HMNS evolution: collapse phase -->
@@ -324,65 +322,15 @@
             </table>
         </section>
         <section>
-            <h3 >Evolution of Star A</h3>
+            <!-- <h3 >Evolution of Star A</h3> -->
+            <h3 >Evolution up to collapse</h3>
             <video controls>
                 <source src="./movies/star_a.mov" type="video/quicktime">    
             </video>
         </section>
-        <!-- remark: The differences between the two EOSs start to become apparent 
-             in the longer term disk evolution -->
         <section>
-            <h3 >Evolutions in the Cowling approximation</h3>
-            <!-- this is an intro slide with the stats on Stars A, C1, C2. 
-                 when they collapsed, when we excised them, when we started 
-                 cowling, and how long the Cowling phase lasted in M and 
-                 disk rotation periods -->
-            <p>The Cowling approximation refers to evolving the fluid on a 
-            frozen spacetime background.<p>
-            
-            <table class="figure_table">
-                <tr> <th>Model</th> 
-                     <th>t<sub>ex</sub></th> 
-                     <th>t<sub>Cowling</sub></th> 
-                     <th>t<sub>end</sub></th> 
-                </tr>
-                <tr> <td>Star A</td> <td>2570</td> <td>2997</td> <td>4909</td> </tr>
-                <tr> <td>Star C</td> <td>941</td> <td>1221</td> <td>3097</td> </tr>
-            </table>
-            <p>(Note: 1000 M ~ 13 ms.)</p>
-        </section>
-        <section>
-            <h3 >Star A: Stiff EOS</h3>
-            <table class="figure_table">
-            <tr>
-            <td><img class="no_background double_row" src="./images/A128190rv.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/A178590rv.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/A244990rv.pdf"></img></td>
-            </tr>
-            <tr>
-            <td><img class="no_background double_row" src="./images/A128190a.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/A178590a.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/A244990a.pdf"></img></td>
-            </tr>
-            </table>
-        </section>
-        <section>
-            <h3 >Star C: Hybrid EOS</h3>
-            <table class="figure_table">
-            <tr>
-            <td><img class="no_background double_row" src="./images/C1068600rv.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1134600rv.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1225600rv.pdf"></img></td>
-            </tr>
-            <tr>
-            <td><img class="no_background double_row" src="./images/C1068600a.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1134600a.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1225600a.pdf"></img></td>
-            </tr>
-            </table>
-        </section>
-        <section>
-            <h3 >Star C: Funnel-wall outflows</h3>
+            <!-- <h3 >Star C: Funnel-wall outflows</h3> -->
+            <h3 >Funnel-wall outflows</h3>
             <table class="figure_table">
             <tr>
             <td><img class="no_background double_row" src="./images/C1_078200v.pdf"></img></td>
@@ -414,7 +362,7 @@
             </div>
         </section>
         <section>
-            <h3 >Why look at eccentric binaries?</h3>
+            <h3 >Why investigate eccentric binaries?</h3>
             <ul>
                 <li>possibly significant rates</li> <!-- XXX Need number here -->
                 <li>distinctive GW signals</li>
@@ -432,10 +380,11 @@
             $$ \frac{1}{2} g^{cd} g_{ab,cd} + g^{cd}{}_{(,a} g_{b)d,c}
                 + \mathcal{H}_{(a,b)} - \mathcal{H}_c \Gamma^c{}_{ab} 
                 + \Gamma^c{}_{bd}\Gamma^d{}_{ac} = -8\pi(T_{ab} - \frac{1}{2}T)  $$
+            <br/>
             <ul>
-                <li>Constraint violations propagate away and are damped</li>
-                <li>First successful BBH simulations (2005)</li>
-                <li>Existing parallel AMR framework</li>
+                <li>constraint violations propagate away and are damped</li>
+                <li>first successful BBH simulations (2005)</li>
+                <li>existing parallel AMR framework</li>
             </li>                
         </section>
         <section>
@@ -451,9 +400,9 @@
             </ul>
         </section>
         <section>
-            <h3 >PAMR/AMRD</h3>
+            <!-- <h3 >PAMR/AMRD</h3> -->
             <div class="left_col">
-            <p>PAMR (Parallel Adaptive Mesh Refinement)</p>
+            <p>PAMR</p> <p><i>Parallel Adaptive Mesh Refinement</i></p>
             <div class="medium_text">
             <ul>
                 <li>defines data structures and grid hierarchy</li>
@@ -471,7 +420,7 @@
             </div>
             </div>
             <div class="right_col">
-            <p>AMRD (Adaptive Mesh Refinement Driver)</p>
+            <p>AMRD</p> <p><i>Adaptive Mesh Refinement Driver</i></p>
             <div class="medium_text">
             <ul>
                 <li>implements Berger-Oliger timestepping</li>
@@ -487,26 +436,17 @@
             <img class="no_background" src="./images/flux_correction.png" width='300px'>
         </section>
         <section>
-            <h3 >Code tests</h3>
-            <ul>
-                <li>1-D shocks following RAM paper</li>
-                <li>2D relativistic Riemann problem</li>
-                <li>Emery step</li>
-                <li>Boosted Bondi accretion</li>
-                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
-            </li>
-            <!-- XXX need to check this slide for completeness -->
-        </section>
-        <section>
             <h3 >Problem setup</h3>
             <div style="width:20%;display:inline;float:left" id="setup_fig"></div>
             <div style="width:70%;display:inline;float:right">
+            <br/>
+            <br/>
             <p> 
             A capture binary forms if 
             $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
-            For Newtonian hyperbolic orbits, 
+            for Newtonian hyperbolic orbits, 
             $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
-            We take $w = 1000$ km/s.
+            we take $w = 1000$ km/s.
             </p> 
             </div>
         </section>
@@ -538,18 +478,6 @@
             <video height="550" controls>
                 <source src="./movies/rp6_95_b64_rho_z.mpg" type="video/mpg">    
             </video>
-        </section>
-        <section>
-            <h3 >Waveforms</h3>
-            <table class="figure_table white_background">
-            <tr>
-            <td colspan="2"><img class="no_background double_row" src="./images/rp6_95_psi4_axis.pdf"></img></td>
-            </tr>
-            <tr>
-            <td><img class="no_background double_row" src="./images/rp7_5_gwave_compare_turner.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/rp10_gwave_compare_turner.pdf"></img></td>
-            </tr>
-            </table>
         </section>
         <section>
             <h3 >Studies of spin and EOS effects</h3>
@@ -634,13 +562,13 @@
             <ul>
                 <li>GraceDB: a gravitational wave candidate event database</li>
                 <li>LVAlert: the LIGO/Virgo Alert system</li>
-                <li>... and the surrounding ecosystem </li>
+                <li>the surrounding ecosystem </li>
             </ul>
-            <p> GraceDB ... </p>
+            <p> GraceDB has three primary charges:</p>
             <ul>
-                <li> ingests and stores information about events </li>
-                <li> exposes information to users and followup processes </li>
-                <li> sends alerts about each new piece of information </li>
+                <li> ingest and store information about candidate events </li>
+                <li> expose information to users and followup processes </li>
+                <li> send alerts about each new piece of information </li>
             </ul>
         </section>
         <section>
@@ -664,17 +592,17 @@
                 <li>statelessness  - each request/response cycle happens in complete 
                     isolation </li>
             </ol>
-            <p>"Resource Oriented Architecture" (ROA) is a specific example of a 
+            <p>Resource Oriented Architecture (ROA) is a specific example of a 
                 RESTful architecture, characterized by: resources, their URIs,
                 their representations, and the links between them (see Leonard 
-                Richardson & Sam Ruby, "RESTful Web Services" O'Reilly 2007). </p>
+                Richardson & Sam Ruby, <i>RESTful Web Services,</i> O'Reilly 2007). </p>
             <!-- mention self-documenting, browseable API? -->
         </section>
         <section>
             <h3 >Authentication and authorization</h3>
             <p> GraceDB has several categories of users: </p>
             <ul>
-                <li>"super" users (e.g., the EM Followup group chairs, control room 
+                <li>super users (e.g., the EM Followup group chairs, control room 
                     operators) </li>
                 <li>internal LVC users (e.g., data analysts, instrument scientists)</li>
                 <li>electromagnetic astronomy MOU group</li>
@@ -682,13 +610,13 @@
             </ul>
         </section>
         <section>
-            <h3 >A day in the life of the GraceDB maintainer (i.e., me)</h3>
+            <h3 >A day in the life of the GraceDB developer</h3>
             <ul>
-                <li>general user support (how to use the client to accomplish science
-                    tasks, how to construct queries, etc.) </li>
+                <li>supporting users (on client usage, query construction, 
+                    etc.) </li>
                 <li>working with users to obtain the necessary auth credentials</li>
-                <li>working on new features</li>
-                <li>updating tickets relating to bugs and feature requests</li>
+                <li>developing new features</li>
+                <li>updating tickets</li>
                 <li>preparing new releases of the client tools</li>
             </ul>
             <!-- XXX reduce these to one word -->
@@ -699,8 +627,11 @@
         <!-- Final slide -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
-            <h3 >Questions?</h3>
+        <section class="photo_background" data-background="images/branson_lho.jpg">
+            <div class="photo_foreground_text">
+            <h2>Questions?</h2>
+            </div>
+            <!-- use binary pulsar fig as background? -->
         </section>
 
         <!-------------------------------------------------------------------->
@@ -807,11 +738,16 @@
             \partial_i \tilde{B}^i &= 0
             \end{align}
         </section>
-        <!--
         <section>
-            <h3 >Feasibility of SGRB from neutrino emission?</h3>
+            <h3 >Summary of tests</h3>
+            <ul>
+                <li>static and radially unstable NS evolution</li>
+                <li>MHD Riemann problems of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
+                <li>magnetized Bondi accretion</li>
+                <li>gravitational wave induced MHD waves</li>
+                <li>magnetized Fishbone-Moncrieff torus evolution</li>
+            </ul>
         </section>
-        -->
         <section>
             <h3 >Behavior with varying seed field strength</h3>
             <table><tr>
@@ -822,6 +758,58 @@
             <!-- remark: Note the complex behavior with regard to collapse time.
             But the development of the turbulence appaers to be the
             same in all cases. -->
+        </section>
+        <!-- remark: The differences between the two EOSs start to become apparent 
+             in the longer term disk evolution -->
+        <section>
+            <h3 >Evolutions in the Cowling approximation</h3>
+            <!-- this is an intro slide with the stats on Stars A, C1, C2. 
+                 when they collapsed, when we excised them, when we started 
+                 cowling, and how long the Cowling phase lasted in M and 
+                 disk rotation periods -->
+            <p>The Cowling approximation refers to evolving the fluid on a 
+            frozen spacetime background.<p>
+            
+            <table class="figure_table">
+                <tr> <th>Model</th> 
+                     <th>t<sub>ex</sub></th> 
+                     <th>t<sub>Cowling</sub></th> 
+                     <th>t<sub>end</sub></th> 
+                </tr>
+                <tr> <td>Star A</td> <td>2570</td> <td>2997</td> <td>4909</td> </tr>
+                <tr> <td>Star C</td> <td>941</td> <td>1221</td> <td>3097</td> </tr>
+            </table>
+            <p>(Note: 1000 M ~ 13 ms.)</p>
+        </section>
+        <section>
+            <h3 >Star A: Stiff EOS</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/A128190rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A178590rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A244990rv.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/A128190a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A178590a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/A244990a.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Star C: Hybrid EOS</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1068600rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1134600rv.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1225600rv.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1068600a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1134600a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1225600a.pdf"></img></td>
+            </tr>
+            </table>
         </section>
         <section>
             <h3 >Stars C1 and C2: Seed-field effects</h3>
@@ -881,6 +869,29 @@
             <h3 >Primitive variable inversion</h3>
         </section>
         -->
+        <section>
+            <h3 >Code tests</h3>
+            <ul>
+                <li>1-D shocks following RAM paper</li>
+                <li>2D relativistic Riemann problem</li>
+                <li>Emery step</li>
+                <li>boosted Bondi accretion</li>
+                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
+            </li>
+            <!-- XXX need to check this slide for completeness -->
+        </section>
+        <section>
+            <h3 >Waveforms</h3>
+            <table class="figure_table white_background">
+            <tr>
+            <td colspan="2"><img class="no_background double_row" src="./images/rp6_95_psi4_axis.pdf"></img></td>
+            </tr>
+            <tr>
+            <td><img class="no_background double_row" src="./images/rp7_5_gwave_compare_turner.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/rp10_gwave_compare_turner.pdf"></img></td>
+            </tr>
+            </table>
+        </section>
         <section>
             <h3 >$$r_p=5.5, a=+0.5$$</h3>
             <video controls>
