@@ -20,10 +20,37 @@
             border: 0px;
             box-shadow: none;
         }
+        .reveal section img.black_background {
+            background: black;
+            border: 0px;
+            box-shadow: none;
+            padding: 10px;
+        }
 
 
         .reveal section p {
             text-align: left;
+            margin-left: 60;
+        }
+
+        .reveal section p.center {
+            text-align: center;
+            margin-left: 0;
+        }
+
+        .reveal section p.shift_right { 
+            margin-left: 80;
+            margin-right: 20;
+        }
+
+        .reveal ul {
+            display: block;
+            margin-left: 80;
+        }
+
+        .reveal ul.extra_left {
+            display: block;
+            margin-left: 240;
         }
 
         .reveal section img.white_background {
@@ -78,6 +105,11 @@
         .reveal section table.figure_table td.centered {
             border: none;
             text-align: center;
+        }
+
+        .reveal section img.shift_left {
+            position: relative;
+            left: 70px;
         }
 
         .reveal section img.double_row {
@@ -153,11 +185,10 @@
         <!-- Title slide -->
         <section>
             <h2>Compact Object Binaries: from Modelling to Observation</h2>
-            <br/>
-            <p>Branson Stephens </p>
-            <p>Leonard E Parker Center for Gravitation and Cosmology</p>
-            <p>November 2015</p>
-            <img class="no_background" src="http://www.gravity.phys.uwm.edu/Images/CGCARevTrs.png" alt="CGCA Logo" height="100px">
+            <p class="center">Branson Stephens </p>
+            <p class="center">Center for Gravitation, Cosmology, and Astrophysics <br/> University of Wisconsin-Milwaukee</p> 
+            <p class="center">December 4, 2015</p>
+            <p class="center"><img class="black_background" src="http://www.gravity.phys.uwm.edu/Images/CGCARevTrs.png" alt="CGCA Logo" height="100px"> </p>
         </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
@@ -183,17 +214,75 @@
                 <tr class="not_compact"> <td>BCS</td> <td>3.36 &times; 10<sup>-29</sup></td> <td>24.7 cm</td> <td>2 &times; 10<sup>-25</sup></td> </tr>
                 <tr> <td></td> <td></td> <td></td> <td></td> </tr>
             </table>
-            <p>Note: (Mostly) using geometrized units with G=c=1, such that <br/>
-            1 M<sub></sub> = 1.99 &times; 10<sup>33</sup> g = 1.47 km. </p>
+            <p class="shift_right">Note: (Mostly) using geometrized units with G=c=1, such that 1 M<sub></sub> = 1.99 &times; 10<sup>33</sup> g = 1.47 km. </p>
         </section>
         <section>
-            <h3 >Binary compact object formation</h3>
+            <h3 >Formation scenarios</h3>
+            
+            <p>Individual compact objects<p>
             <ul>
-                <li>field (a.k.a. primordial) binaries</li>
-                <li>dynamical capture binaries</li>
+            <li>black holes: collapse (M &gt; 25 M<sub>&#x2609;</sub>),
+                accretion induced collapse, mergers</li>
+            <li>neutron stars: supernova explosions (8 M<sub>&#x2609;</sub>
+                &lt; M &lt; 25 M<sub>&#x2609;</sub>)
+            <li>white dwarfs: mass loss exposing CO core
+                (M &lt; 11 M<sub>&#x2609;</sub>) </li>
+            </ul>
+    
+            <p>Binary compact objects:<p>
+            <ul>
+                <li>field: formed from a single rotating cloud</li>
+                <li>dynamical: capture in dense stellar environments</li>
             </li>
-            <p>Orbits decay on a timescale given by:</p>
-            $$ t_{\mathrm{merger}} \sim \frac{5}{256}\frac{c^5}{G^3}\frac{a^4}{M^2\mu} $$
+
+        </section>
+        <section>
+            <h3>The Einstein equations and curvature</h3>
+            $$ R_{ab} = 8\pi(T_{ab} - \frac{1}{2}g_{ab}T) $$
+            <p>where the Ricci tensor, \(R_{ab}\) encodes the change in a vector 
+            parallel-transported around a closed curve. It is calculated by 
+            taking derivatives of the <i>connection</i>:</p>
+            $$ds^2 = g_{ab} dx^a dx^b$$
+            $$\Gamma^c{}_{ab} = \frac{1}{2}g^{cd}[g_{ad,b} + g_{bd,a} - g_{ab,d}] $$
+            $$R_{ab} = \Gamma^c{}_{ab,c} - \Gamma^c{}_{cb,a} + 
+                    \Gamma^d{}_{ab}\Gamma^{c}{}_{dc} -
+                    \Gamma^{d}{}_{cb}\Gamma^{c}{}_{da}$$ 
+            <!-- would be nice to have a figure link John Friedman's demonstrating
+                how Ricci is related to parallel transport -->
+        </section>
+        <section>
+            <h3>Gravitational waves</h3>
+            <!-- <p>Perturb the flat spacetime metric $\eta_{ab}$: </p> -->
+            <div style="display:block;float:left;width=10%;height=100"> 
+            &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            </div>
+            <div style="display:inline-block;float:left;width=40%;text-align:center;">
+            <br/>
+            $$ g_{ab} = \eta_{ab} + h_{ab},  |h_{ab}| \ll 1 $$
+            <!-- <p>In transverse-traceless gauge: </p> -->
+            <p class="center">$ \Box h^{TT}_{jk} = 0, $ where 
+            $ h^{TT}_{jk} = h_{+}e^{+}_{jk} + h_{\times} e^{\times}_{jk} $</p>
+            <!-- <p class="center"> $ h^{TT}_{jk} = \frac{2}{r}\frac{G}{c^4}\ddot{I}^{TT}_{jk}
+                \left(t - \frac{r}{c}\right) $ </p> -->
+            $$ h^{TT}_{jk} = \frac{2}{r}\frac{G}{c^4}\ddot{I}^{TT}_{jk}
+                \left(t - \frac{r}{c}\right) $$
+            </div>
+
+            <!-- <table><tr>
+            <td><img class="no_background" src="images/gw_plus.gif" height="100px"/></td>
+            <td><img class="no_background" src="images/gw_cross.gif" height="100px"/></td>
+            </tr></table> -->
+            <div style="display:inline-block;float:left;width=30%;padding-left:80">
+            <table class="figure_table">
+            <tr><td><img class="no_background" src="images/gw_plus.gif" height="100px"/> </tr></td>
+            <tr><td><img class="no_background" src="images/gw_cross.gif" height="100px"/></tr></td>
+            </table>
+            </div>
+        </section>
+        <section>
+            <h3>GW-induced orbital decay</h3>
+            <p>Orbits decay on a timescale given by: </p>
+            $$ t_{\mathrm{merger}} \sim \frac{5}{256}\frac{c^5}{G^3}\frac{a^4}{M^2\mu} $$ 
             <p>where $M = M_1 + M_2$ and $\mu = M_1 M_2 / (M_1 + M_2)$ (see
             Shapiro and Teukolsky, 1983). For the double pulsar J0737-3039
             with a period of 2.4 hours, $t_{\mathrm{merger}} \sim 83$ Myr.</p>
@@ -232,8 +321,8 @@
         <!-------------------------------------------------------------------->
         <section class="photo_background" data-background="images/foellinger_uiuc.jpg">
             <div class="photo_foreground_text">
-            <h2>Magnetized collapse</h2>
-            <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro, Masaru Shibata</p>
+            <h2>Numerical relativity</h2>
+            <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro</p>
             </div>
         </section>
         <section>
@@ -247,22 +336,53 @@
                     in the observables? Could aid parameter estimation. -->
             </li>
         </section>
-        <!-- remark: These simulations necessarily involve a dynamically evolving
-            spacetime. But what do I mean by that? First, I'll introduce the 
-            cast of characters. -->
         <section>
-            <h3 >The Einstein Equations</h3>
-            $$ R_{ab} = 8\pi(T_{ab} - \frac{1}{2}g_{ab}T) $$
-            <p>where the Ricci tensor, \(R_{ab}\) encodes the change in a vector 
-            parallel-transported around a closed curve. It is calculated by 
-            taking derivatives of the <i>connection</i>:</p>
-            $$ds^2 = g_{ab} dx^a dx^b$$
-            $$\Gamma^c{}_{ab} = \frac{1}{2}g^{cd}[g_{ad,b} + g_{bd,a} - g_{ab,d}] $$
-            $$R_{ab} = \Gamma^c{}_{ab,c} - \Gamma^c{}_{cb,a} + 
-                    \Gamma^d{}_{ab}\Gamma^{c}{}_{dc} -
-                    \Gamma^{d}{}_{cb}\Gamma^{c}{}_{da}$$ 
-            <!-- would be nice to have a figure link John Friedman's demonstrating
-                how Ricci is related to parallel transport -->
+            <h3 >The 3+1 splitting</h3>
+            <div style="display:inline-block;float:left;width=30%">
+            <img class="no_background" src="./images/foliation.pdf" width='300px'></img> 
+            <p><div class="small_text">Figure from E. Gourgoulhon.</div></p>
+            </div>
+
+            <div style="display:inline-block;float:right;width=60%">
+            <br/><br/>
+            $$\gamma_{ab} = g_{ab} + n_a n_b$$
+            <p>where</p>
+            $$ n_a n^a = -1, n^a = \left( \frac{1}{\alpha}, -\frac{\beta^i}{\alpha}\right), n_a = (-\alpha, 0,0,0) $$
+
+            <br/>
+            $$ ds^2 = -\alpha^2 dt^2 + \gamma_{ij}(dx^i + \beta^i dt)(dx^j + \beta^j dt) $$
+            </div>
+        </section>
+        <section>
+            <h3 >Einstein in 3+1</h3>
+            <!-- Remark: Will talk about another formulation, the 'generalized
+                harmonic formulation', later -->
+            <p>Evolution: </p> 
+            \begin{align}
+            \partial_t \gamma_{ij} =& - 2\alpha K_{ij} + \mathcal{L}_{\beta}\gamma_{ij} \\
+            
+            \partial_t K_{ij}      =& - D_i D_j \alpha + \alpha(R_{ij} - 2K_{ik}K^k{}_{j}
+                + KK_{ij})  
+                - 8\pi\alpha[S_{ij} - \frac{1}{2}\gamma_{ij}(S-\rho_S) 
+                + \mathcal{L}_{\beta}K_{ij} ] 
+            \end{align}
+            <div class="left_col">
+            <p>Constraints:</p>
+            \begin{align}
+            R + K^2 - K_{ij}K^{ij} =& 16\pi\rho_S \\
+            D_i K - D_j K_i{}^j    =& 8\pi S_i
+            \end{align}
+            </div>
+            <div class="right_col">
+            <p>Matter sources:</p>
+            \begin{align}
+            \rho_S =& n_a n_b T^{ab} \\
+            S_i    =& -\gamma_{ia} n_b T^{ab} \\
+            S_{ij} =& \gamma_{ia}\gamma_{jb} T^{ab} \\
+            S      =& S^i{}_i 
+            \end{align}
+            </div>
+            
         </section>
         <section>
             <h3 >The GRMHD equations</h3>
@@ -287,64 +407,22 @@
                 
             </ul>
         </section>
-        <!-- HMNS evolution: collapse phase -->
         <section>
-            <h3 >An application problem: mangetized hypermassive neutron stars</h3>
-            <table>
-            <tr>
-            <td><img class="no_background" src="./images/initrho.pdf"></img></td>
-            <td><img class="no_background" src="./images/initB.c1.pdf"></img></td>
-            </tr>
-            </table>
-            <!-- Remark: I will be focusing on one of our application problems,
-                 but we also explored collapse of pop III stars to BHs and the
-                 evolution of magnetized PNSs. -->
-            <!-- remark: HMNSs form via BNS mergers ... -->
-            <!-- describe initial data models. Grab data from tables in paper.
-                 will be talking about A, C1, and C2. Explain this as a simple
-                 exploration fo EOS and initial magnetic field config effects. -->
-        </section>
-        <section>
-            <h3 >Principal magnetic effects</h3>
-            <table class="figure_table">
-                <tr>
-                    <td class="centered">magnetic braking</td>
-                    <td class="centered">magnetorotational instability</td>
-                </tr>
-                <tr>
-                    <td class="centered"><img class="no_background" src="./images/mag_braking.pdf" style="max-height: 300px;"></img></td>
-                    <td class="centered"><img class="no_background" src="./images/mag_rot_inst.pdf" style="max-height: 300px;"></img></td>
-                </tr>
-                <tr>
-                    <td class="centered"><div class="small_text">(see, e.g., Spriut A&amp;A <b>349</b>, 149, 1999)</div></td>
-                    <td class="centered"><div class="small_text">(see Balbus &amp; Hawley RMP <b>70</b>, 1, 1998)</div></td>
-                </tr>
-            </table>
-        </section>
-        <section>
-            <!-- <h3 >Evolution of Star A</h3> -->
-            <h3 >Evolution up to collapse</h3>
-            <video controls>
-                <source src="./movies/star_a.mov" type="video/quicktime">    
-            </video>
-        </section>
-        <section>
-            <!-- <h3 >Star C: Funnel-wall outflows</h3> -->
-            <h3 >Funnel-wall outflows</h3>
-            <table class="figure_table">
-            <tr>
-            <td><img class="no_background double_row" src="./images/C1_078200v.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1078200a.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1_089000v.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/C1089000a.pdf"></img></td>
-            </tr>
-            </table>
-
-            <!-- This might be a good place to remark that the Blandford-Znajek
-                 process probably should be operating in the main part of the
-                 funnel. We don't see that because our handling of the hydro
-                 evolution in magnetically dominated regions is probably 
-                 inaccurate. -->
+            <h4>Summary of tests:</h4>
+            <ul>
+                <li>static and radially unstable NS evolution</li>
+                <li>MHD Riemann tests of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
+                <li>magnetized Bondi accretion</li>
+                <li>gravitational wave induced MHD waves</li>
+                <li>magnetized Fishbone-Moncrieff torus evolution</li>
+            </ul>
+            <br/>
+            <h4>Applications: </h4>
+            <ul>
+                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a></li>
+                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a></li>
+                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a></li> 
+            </ul>
         </section>
 
         <!-------------------------------------------------------------------->
@@ -396,7 +474,7 @@
                 <li>approximate Riemann solvers: HLL, Roe, Marquina</li>
                 <li>reconstruction of primitives: PLM, PPM, WENO5</li>
                 <li>flexible EOS specification ($\Gamma$-law, piecewise 
-                    polytropic, tabular, etc.)  </li>
+                    polytropic, tabular)  </li>
             </ul>
         </section>
         <section>
@@ -436,16 +514,30 @@
             <img class="no_background" src="./images/flux_correction.png" width='300px'>
         </section>
         <section>
+            <h3 >Code tests</h3>
+            <ul class="extra_left">
+                <li>1-D shocks following RAM paper</li>
+                <li>2D relativistic Riemann problem</li>
+                <li>Emery step</li>
+                <li>boosted Bondi accretion</li>
+                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
+            </li>
+            <!-- XXX need to check this slide for completeness -->
+        </section>
+        <section>
             <h3 >Problem setup</h3>
+            <div style="width:100px;height=100;display:inline;float:left">
+            <br/>
+            </div>
             <div style="width:20%;display:inline;float:left" id="setup_fig"></div>
-            <div style="width:70%;display:inline;float:right">
-            <br/>
-            <br/>
+            <div style="width:60%;display:inline;float:right">
             <p> 
             A capture binary forms if 
             $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
+            <br/>
             for Newtonian hyperbolic orbits, 
             $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
+            <br/>
             we take $w = 1000$ km/s.
             </p> 
             </div>
@@ -515,7 +607,7 @@
         <section class="photo_background" data-background="images/kirc.jpg">
             <div class="photo_foreground_text">
             <h2>LIGO Computing</h2>
-            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, and others</p>
+            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, ... </p>
             </div>
         </section>
         <section>
@@ -528,14 +620,15 @@
         <section>
             <h3 >GW detection basics</h3>
             <table>
-            <tr> <td>
+            <tr> <td class="centered">
             <img class="no_background" src="./images/lrr_schematic_interferometer.png">
-            <p>Image from <a href="http://relativity.livingreviews.org/Articles/lrr-2011-5/fulltext.html">Pitkin et al., LRR, 2011</a>. Must measure
+
+            <p>from <a href="http://relativity.livingreviews.org/Articles/lrr-2011-5/fulltext.html">Pitkin et al., LRR, 2011</a>. Must measure
             $$ h \sim \frac{\Delta L}{L} \sim 10^{-21} $$
             </p>
             </td>
-            <td>
-            <img class="white_background" src="./images/Fig_aligo_sensitivity.pdf">
+            <td class="centered">
+            <img class="white_background shift_left" src="./images/Fig_aligo_sensitivity.pdf">
             <p>Figure from <a href="https://dcc.ligo.org/LIGO-P1200087-v23">LIGO Observing Scenarios</a> document.</p>
             </td>
             </tr>
@@ -553,8 +646,10 @@
         </section>
         <section>
             <h3 >LIGO data analysis: Unmodeled bursts</h3>
-            <img class="no_background" height="600" src="./images/bigdog_h1.png">
-            <p>Image from <a href="http://www.ligo.org/scientists/GW100916/spectrograms.html">GW100916</a> blind injection data release.</p>
+            <img class="no_background" height="480" src="./images/bigdog_h1.png">
+            <div class="small_text">
+            <p class="center">from <a href="http://www.ligo.org/scientists/GW100916/spectrograms.html">GW100916</a> blind injection data release.</p>
+            </div>
             <!-- cWB, Klimenko et al., http://arxiv.org/pdf/0802.3232v2.pdf -->
         </section>
         <section>
@@ -584,18 +679,20 @@
         <section>
             <h3 >The RESTful interface</h3>
             <p>REST (Roy Fielding, 2000) is a set of design criteria:</p>
-            <ol>
+            <ul>
                 <li>addressibility - scoping information (which data) is in 
                     the URI </li>
                 <li>uniform interface - action is specified by the HTTP method </li>
                 <li>connectedness - the data are inter-linked </li>
                 <li>statelessness  - each request/response cycle happens in complete 
                     isolation </li>
-            </ol>
+            </ul>
+            <div class="small_text">
             <p>Resource Oriented Architecture (ROA) is a specific example of a 
                 RESTful architecture, characterized by: resources, their URIs,
                 their representations, and the links between them (see Leonard 
                 Richardson & Sam Ruby, <i>RESTful Web Services,</i> O'Reilly 2007). </p>
+            </div>
             <!-- mention self-documenting, browseable API? -->
         </section>
         <section>
@@ -631,7 +728,6 @@
             <div class="photo_foreground_text">
             <h2>Questions?</h2>
             </div>
-            <!-- use binary pulsar fig as background? -->
         </section>
 
         <!-------------------------------------------------------------------->
@@ -639,8 +735,10 @@
         <!-- Extra Slides -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section>
-            <h1>Extra Slides</h1>
+        <section class="photo_background" data-background="images/ice_road.jpg">
+            <div class="photo_foreground_text">
+            <h2>Extra slides</h2>
+            </div>
         </section>
         <section>
             <h3 >Expected merger rates: field binaries</h3>
@@ -668,37 +766,6 @@
             <p> from Lee, Ramirez-Ruiz, van de Ven (ApJ, 720, 953 2010), cf. 
                 Rodriguez et al.  (arXiv:1505.00792), who predict 100 aLIGO 
                 detections per year </p>
-        </section>
-        <section>
-            <h3 >The 3+1 splitting</h3>
-            <div style="display:inline-block;float:left;width=30%">
-            <img class="no_background" src="./images/foliation.pdf" width='300px'></img> 
-            <p><div class="small_text">Figure from E. Gourgoulhon.</div></p>
-            </div>
-
-            <div style="display:inline-block;float:right;width=60%">
-            <br/><br/>
-            $$\gamma_{ab} = g_{ab} + n_a n_b$$
-            <p>where</p>
-            $$ n_a n^a = -1, n^a = \left( \frac{1}{\alpha}, -\frac{\beta^i}{\alpha}\right), n_a = (-\alpha, 0,0,0) $$
-
-            $$ ds^2 = -\alpha^2 dt^2 + \gamma_{ij}(dx^i + \beta^i dt)(dx^j + \beta^j dt) $$
-            </div>
-        </section>
-        <section>
-            <h3 >3+1 evolution</h3>
-            <!-- Remark: Will talk about another formulation, the 'generalized
-                harmonic formulation', later -->
-            
-            \begin{align}
-            \partial_t \gamma_{ij} =& - 2\alpha K_{ij} + \mathcal{L}_{\beta}\gamma_{ij} \\
-            
-            \partial_t K_{ij} =& - D_i D_j \alpha + \alpha(R_{ij} - 2K_{ik}K^k{}_{j}
-                + KK_{ij}) \\ 
-                & - 8\pi\alpha[S_{ij} - \frac{1}{2}\gamma_{ij}(S-\rho_S) 
-                + \mathcal{L}_{\beta}K_{ij} ] 
-            \end{align}
-            
         </section>
         <section>
             <h3 >The BSSN formulation</h3>
@@ -738,16 +805,66 @@
             \partial_i \tilde{B}^i &= 0
             \end{align}
         </section>
+        <!-- HMNS evolution: collapse phase -->
         <section>
-            <h3 >Summary of tests</h3>
-            <ul>
-                <li>static and radially unstable NS evolution</li>
-                <li>MHD Riemann problems of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
-                <li>magnetized Bondi accretion</li>
-                <li>gravitational wave induced MHD waves</li>
-                <li>magnetized Fishbone-Moncrieff torus evolution</li>
-            </ul>
+            <h3 >An application problem: mangetized hypermassive neutron stars</h3>
+            <table>
+            <tr>
+            <td><img class="no_background" src="./images/initrho.pdf"></img></td>
+            <td><img class="no_background" src="./images/initB.c1.pdf"></img></td>
+            </tr>
+            </table>
+            <!-- Remark: I will be focusing on one of our application problems,
+                 but we also explored collapse of pop III stars to BHs and the
+                 evolution of magnetized PNSs. -->
+            <!-- remark: HMNSs form via BNS mergers ... -->
+            <!-- describe initial data models. Grab data from tables in paper.
+                 will be talking about A, C1, and C2. Explain this as a simple
+                 exploration fo EOS and initial magnetic field config effects. -->
         </section>
+        <section>
+            <h3 >Principal magnetic effects</h3>
+            <table class="figure_table">
+                <tr>
+                    <td class="centered">magnetic braking</td>
+                    <td class="centered">magnetorotational instability</td>
+                </tr>
+                <tr>
+                    <td class="centered"><img class="no_background" src="./images/mag_braking.pdf" style="max-height: 300px;"></img></td>
+                    <td class="centered"><img class="no_background" src="./images/mag_rot_inst.pdf" style="max-height: 300px;"></img></td>
+                </tr>
+                <tr>
+                    <td class="centered"><div class="small_text">(see, e.g., Spriut A&amp;A <b>349</b>, 149, 1999)</div></td>
+                    <td class="centered"><div class="small_text">(see Balbus &amp; Hawley RMP <b>70</b>, 1, 1998)</div></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <!-- <h3 >Evolution of Star A</h3> -->
+            <h3 >Evolution up to collapse</h3>
+            <video controls>
+                <source src="./movies/star_a.mov" type="video/quicktime">    
+            </video>
+        </section>
+        <section>
+            <!-- <h3 >Star C: Funnel-wall outflows</h3> -->
+            <h3 >Funnel-wall outflows</h3>
+            <table class="figure_table">
+            <tr>
+            <td><img class="no_background double_row" src="./images/C1_078200v.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1078200a.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1_089000v.pdf"></img></td>
+            <td><img class="no_background double_row" src="./images/C1089000a.pdf"></img></td>
+            </tr>
+            </table>
+
+            <!-- This might be a good place to remark that the Blandford-Znajek
+                 process probably should be operating in the main part of the
+                 funnel. We don't see that because our handling of the hydro
+                 evolution in magnetically dominated regions is probably 
+                 inaccurate. -->
+        </section>
+
         <section>
             <h3 >Behavior with varying seed field strength</h3>
             <table><tr>
@@ -840,6 +957,8 @@
             </tr>
             </table>
         </section>
+        
+        <!-- Princeton stuff -->
         <section>
             <h3 >Gauge conditions</h3>
             <p>We usually take $H_i=0$ and </p>
@@ -869,17 +988,6 @@
             <h3 >Primitive variable inversion</h3>
         </section>
         -->
-        <section>
-            <h3 >Code tests</h3>
-            <ul>
-                <li>1-D shocks following RAM paper</li>
-                <li>2D relativistic Riemann problem</li>
-                <li>Emery step</li>
-                <li>boosted Bondi accretion</li>
-                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
-            </li>
-            <!-- XXX need to check this slide for completeness -->
-        </section>
         <section>
             <h3 >Waveforms</h3>
             <table class="figure_table white_background">
@@ -1406,9 +1514,9 @@ plt_info.forEach( function(pi) {
 <!-- the following is for the little setup cartoon. -->
 <script>
 
-var margin = {top: 20, right: 20, bottom: 20, left: 20};
-var width = 300 - margin.left - margin.right;
-var height = 600 - margin.top - margin.bottom;
+var margin = {top: 40, right: 20, bottom: 20, left: 20};
+var width = 240 - margin.left - margin.right;
+var height = 400 - margin.top - margin.bottom;
 
 var y_bh = height * 0.15;
 var y_ns = height * 0.85;
@@ -1417,7 +1525,7 @@ var x_bh = width * 0.25;
 var x_ns = width * 0.75;
 
 // define a radius scale
-var M = 4;
+var M = 2;
 var r_bh = 8*M;
 var r_ns = Math.round(5.86*M);
 
@@ -1510,13 +1618,13 @@ svg.append('line')
 svg.append("text")
     .attr("class", "label_text")
     .attr("text-anchor", "middle")
-    .attr("transform", "translate(" + (x_bh - 1.8*r_bh) + "," + y_bh + ")")
+    .attr("transform", "translate(" + (x_bh - 2.6*r_bh) + "," + (y_bh + 0.5*r_bh) + ")")
     .text("4M") 
 svg.append("text")
     .attr("class", "label_text")
     .attr("text-anchor", "middle")
     .attr("fill", "steelblue")
-    .attr("transform", "translate(" + (x_ns + 1.8*r_ns) + "," + y_ns + ")")
+    .attr("transform", "translate(" + (x_ns + 2.6*r_ns) + "," + (y_ns + r_ns) + ")")
     .text("M") 
 svg.append("text")
     .attr("class", "label_text")
