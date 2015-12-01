@@ -190,15 +190,27 @@
             <p class="center">December 4, 2015</p>
             <p class="center"><img class="black_background" src="http://www.gravity.phys.uwm.edu/Images/CGCARevTrs.png" alt="CGCA Logo" height="100px"> </p>
         </section>
+        <section>
+            <h3>Outline</h3>
+            <ul class="extra_left">
+                <li>Introduction</li>
+                <li>Numerical relativity</li>
+                <li>Eccentric black hole-neutron star mergers</li>
+                <li>LIGO and computing infrastructure</li>
+            </ul>
+        </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Introduction -->
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
-        <section class="photo_background" data-background="images/messier15.jpg">
+        <!-- <section class="photo_background" data-background="images/messier15.jpg">
             <div class="photo_foreground_text">
             <h2>Introduction</h2>
             </div>
+        </section> -->
+        <section>
+            <h2>Introduction</h2>
             <!-- use binary pulsar fig as background? -->
         </section>
         <section>
@@ -302,7 +314,7 @@
             binaries in globular and nuclear clusters are likely to be comparable            (Lee et al. 2010) or even higher (Rodriguez 2015).</p>
         </section>
         <section>
-            <h3 >What makes these mergers intersting?</h3>
+            <h3 >What makes these mergers interesting?</h3>
             <!-- <p> Compact binaries probe interesting physics: </p> -->
             <ul>
                 <li> general relativity in the strong field regime </li>
@@ -324,17 +336,6 @@
             <h2>Numerical relativity</h2>
             <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro</p>
             </div>
-        </section>
-        <section>
-            <h3 >Motivation for numerical simualtions</h3>
-            <ul>
-                <li> connecting the central engine back to observables </li>
-                <li> understanding the source population </li>
-                <li> understanding the spectrum of possible behaviors </li>
-                <!-- Remark: e.g., what outcomes are sensitive to initial conditions?
-                    What different sets of initial conditions result in degeracies
-                    in the observables? Could aid parameter estimation. -->
-            </li>
         </section>
         <section>
             <h3 >The 3+1 splitting</h3>
@@ -407,24 +408,6 @@
                 
             </ul>
         </section>
-        <section>
-            <h4>Summary of tests:</h4>
-            <ul>
-                <li>static and radially unstable NS evolution</li>
-                <li>MHD Riemann tests of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
-                <li>magnetized Bondi accretion</li>
-                <li>gravitational wave induced MHD waves</li>
-                <li>magnetized Fishbone-Moncrieff torus evolution</li>
-            </ul>
-            <br/>
-            <h4>Applications: </h4>
-            <ul>
-                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a></li>
-                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a></li>
-                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a></li> 
-            </ul>
-        </section>
-
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
         <!-- Phase II: Princeton -->
@@ -512,17 +495,6 @@
         <section>
             <h3 >The Berger-Colella flux correction</h3>
             <img class="no_background" src="./images/flux_correction.png" width='300px'>
-        </section>
-        <section>
-            <h3 >Code tests</h3>
-            <ul class="extra_left">
-                <li>1-D shocks following RAM paper</li>
-                <li>2D relativistic Riemann problem</li>
-                <li>Emery step</li>
-                <li>boosted Bondi accretion</li>
-                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
-            </li>
-            <!-- XXX need to check this slide for completeness -->
         </section>
         <section>
             <h3 >Problem setup</h3>
@@ -768,6 +740,17 @@
                 detections per year </p>
         </section>
         <section>
+            <h3 >Motivation for numerical simualtions</h3>
+            <ul>
+                <li> connecting the central engine back to observables </li>
+                <li> understanding the source population </li>
+                <li> understanding the spectrum of possible behaviors </li>
+                <!-- Remark: e.g., what outcomes are sensitive to initial conditions?
+                    What different sets of initial conditions result in degeracies
+                    in the observables? Could aid parameter estimation. -->
+            </li>
+        </section>
+        <section>
             <h3 >The BSSN formulation</h3>
             <!-- Remark: Will talk about another formulation, the 'generalized
                 harmonic formulation', later -->
@@ -806,6 +789,23 @@
             \end{align}
         </section>
         <!-- HMNS evolution: collapse phase -->
+        <section>
+            <h4>Summary of tests:</h4>
+            <ul>
+                <li>static and radially unstable NS evolution</li>
+                <li>MHD Riemann tests of Komissarov (MNRAS <b>303</b>, 343, 1999)</li>
+                <li>magnetized Bondi accretion</li>
+                <li>gravitational wave induced MHD waves</li>
+                <li>magnetized Fishbone-Moncrieff torus evolution</li>
+            </ul>
+            <br/>
+            <h4>Applications: </h4>
+            <ul>
+                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a></li>
+                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a></li>
+                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a></li> 
+            </ul>
+        </section>
         <section>
             <h3 >An application problem: mangetized hypermassive neutron stars</h3>
             <table>
@@ -982,6 +982,17 @@
                \end{align} 
             <p>In this extended system, the constraints effectively obey a damped wave equation:</p>
                 $$ \Box C^a = -R^a{}_b C^b + 2\kappa \nabla_b \left[n^{(b}C^{a)}\right] $$
+        </section>
+        <section>
+            <h3 >Code tests</h3>
+            <ul class="extra_left">
+                <li>1-D shocks following RAM paper</li>
+                <li>2D relativistic Riemann problem</li>
+                <li>Emery step</li>
+                <li>boosted Bondi accretion</li>
+                <li>NS-NS relativistic $\gamma = 2,5$ head-on collisions</li>
+            </li>
+            <!-- XXX need to check this slide for completeness -->
         </section>
         <!--
         <section>
