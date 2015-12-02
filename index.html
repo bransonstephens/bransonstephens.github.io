@@ -115,6 +115,10 @@
             max-height: 220px;
         }
 
+        .reveal section img.double_row2 {
+            max-height: 180px;
+        }
+
         .reveal section img.double_row.rotated {
             max-width: 220px;
         }
@@ -377,10 +381,15 @@
         <section>
             <h3>Target applications</h3>
             <ul>
-                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a></li>
-                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a></li>
-                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a></li> 
+                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a> (Duez, Liu, Shapiro, Shibata, &amp; Stephens, PRL <b>96</b>, 031101 2006)</li>
+                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a> (Liu, Shapiro, Stephens, PRD <b>76</b>, 084017 2007)</li>
+                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a> (Stephens, Liu, Shapiro, PRD <b>77</b> 044001 2008)</li> 
             </ul>
+            <img class="white_background" src="./images/fishbone_moncrieff.png" height="250px">
+
+            <!-- I'll talk about numerical relativity in the context of my first 
+            code development project, which was a general-relativistic MHD code.
+            Our target application problems are listed here. -->
         </section>
         <section>
             <h3 >The 3+1 splitting</h3>
@@ -558,46 +567,64 @@
         <section>
             <h3 >The Berger-Colella flux correction</h3>
             <img class="no_background" src="./images/flux_correction.png" width='300px'>
+            <div class="small_text">
+            <p class="center">Berger &amp; Colella, JCP <b>82</b>, 64 (1989)</p>
+            </div>
         </section>
         <section>
             <h3>Periastron radius dependence</h3>
             <table class="figure_table">
             <tr>
-            <td><img class="no_background double_row" src="./images/rp5_merge.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/rp6_67_disk.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/rp6_81_tail.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp5_merge.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp6_67_disk.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp6_81_tail.pdf"></img></td>
             </tr>
             <tr>
-            <td><img class="no_background double_row" src="./images/rp6_95_transfer.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/rp6_95_later.pdf"></img></td>
-            <td><img class="no_background double_row" src="./images/rp7_5_disk.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp6_95_transfer.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp6_95_later.pdf"></img></td>
+            <td><img class="no_background double_row2" src="./images/rp7_5_disk.pdf"></img></td>
             </tr>
             </table>
             <!-- XXX Ugh... do we need a density scale? Say it in words? -->
             <div id="rp_plot"></div>
+            <div class="small_text">
+            <p class="center">Stephens, East, Pretorius, ApJ <b>737</b>, L5 (2011)</p>
+            </div>
         </section>
         <section>
             <h3 >Below threshold: tidal disruption</h3>
-            <video height="550" controls>
+            <video height="500" controls>
                 <source src="./movies/rp6_81_b64_rho_z_alt.mpg" type="video/mpg">    
             </video>
+            <div class="small_text">
+            <p class="center">Stephens, East, Pretorius, ApJ <b>737</b>, L5 (2011)</p>
+            </div>
         </section>
         <section>
             <h3 >Above threshold: final orbit</h3>
-            <video height="550" controls>
+            <video height="500" controls>
                 <source src="./movies/rp6_95_b64_rho_z.mpg" type="video/mpg">    
             </video>
+            <div class="small_text">
+            <p class="center">Stephens, East, Pretorius, ApJ <b>737</b>, L5 (2011)</p>
+            </div>
         </section>
         <section>
             <h3 >Studies of spin and EOS effects</h3>
             <div id="spin_plot"></div>
             <div id="eos_plot"></div>
+            <div class="small_text">
+            <p class="center">East, Pretorius, Stephens, PRD <b>85</b>, 124009 (2012)</p>
+            </div>
         </section>
         <section>
             <h3 >Tidally induced f-modes</h3>
-            <video height="550" controls>
+            <video height="500" controls>
                 <source src="./movies/rp6_95_b64_rho_z.mpg" type="video/mpg">    
             </video>
+            <div class="small_text">
+            <p class="center">Stephens, East, Pretorius, ApJ <b>737</b>, L5 (2011)</p>
+            </div>
         </section>
         <section>
             <h3 >Tidally induced f-modes</h3>
@@ -615,6 +642,9 @@
             </td>
             </tr>
             </table>
+            <div class="small_text">
+            <p class="center">East, Pretorius, Stephens, PRD <b>85</b>, 124009 (2012)</p>
+            </div>
         </section>
         <!-------------------------------------------------------------------->
         <!-------------------------------------------------------------------->
@@ -1562,6 +1592,13 @@ plt_info.forEach( function(pi) {
       .attr("x2",495)
       .attr("y1",280)
       .attr("y2",280)
+
+    svg.append('text')
+      .attr("x", 550)
+      .attr("y", 500)
+      .style("text-anchor", "center")
+      .attr("font-size", "16px")
+      .text("Adapted from the LIGO Open Science Center tutorials")
 
 });
 
