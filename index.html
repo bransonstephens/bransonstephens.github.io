@@ -27,7 +27,6 @@
             padding: 10px;
         }
 
-
         .reveal section p {
             text-align: left;
             margin-left: 60;
@@ -191,6 +190,9 @@
             <p class="center"><img class="black_background" src="http://www.gravity.phys.uwm.edu/Images/CGCARevTrs.png" alt="CGCA Logo" height="100px"> </p>
         </section>
         <section>
+            <h3>Multi-messenger astronomy</h3>
+        </section>
+        <section>
             <h3>Outline</h3>
             <ul class="extra_left">
                 <li>Introduction</li>
@@ -214,8 +216,30 @@
             <!-- use binary pulsar fig as background? -->
         </section>
         <section>
+            <h3>Black holes</h3>
+            <img class="no_background" src="images/cygx1_ill.jpg" height="400px"/>
+            <div class="small_text">
+            <p class="center">Image credit: <a href="http://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-a-black-hole-58.html">NASA Chandra X-Ray Observatory</a></p>
+            <!-- a black hole accreting from its blue supergiant companion. HMXB -->
+            </div>
+        </section>
+        <section>
+            <h3>Neutron stars</h3>
+            <img class="no_background" src="images/ns_cross_section.jpg" height="400px"/>
+            <div class="small_text">
+            <p class="center">Image credit: <a href="http://asd.gsfc.nasa.gov/blueshift/index.php/2014/11/14/jasons-blog-next-stop-magnetars/">NASA Goddard</a></p>
+            </div>
+        </section>
+        <section>
+            <h3>White dwarfs</h3>
+            <img class="no_background" src="images/sirius_b.jpg" height="400px"/>
+            <div class="small_text">
+            <p class="center">Image credit: <a href="http://scienceblogs.com/startswithabang/2012/11/08/where-do-type-ia-supernovae-come-from/">NASA/ESA</a></p>
+            </div>
+        </section>
+        <section>
             <!-- XXX Make true compact objects a different color -->
-            <h3 >What are compact objects?</h3>
+            <h3 >How compact are compact objects?</h3>
             <table class="figure_table">
                 <tr> <th>Object</th> <th>M (M<sub>&#x2609;</sub>)</th> <th>R</th> <th>M/R</th> </tr>
                 <tr> <td>Cygnus X-1</td> <td>10</td> <td>29 km</td> <td>0.5</td> </tr>
@@ -229,27 +253,29 @@
             <p class="shift_right">Note: (Mostly) using geometrized units with G=c=1, such that 1 M<sub></sub> = 1.99 &times; 10<sup>33</sup> g = 1.47 km. </p>
         </section>
         <section>
-            <h3 >Formation scenarios</h3>
-            
-            <p>Individual compact objects<p>
-            <ul>
-            <li>black holes: collapse (M &gt; 25 M<sub>&#x2609;</sub>),
-                accretion induced collapse, mergers</li>
-            <li>neutron stars: supernova explosions (8 M<sub>&#x2609;</sub>
-                &lt; M &lt; 25 M<sub>&#x2609;</sub>)
-            <li>white dwarfs: mass loss exposing CO core
-                (M &lt; 11 M<sub>&#x2609;</sub>) </li>
-            </ul>
-    
-            <p>Binary compact objects:<p>
-            <ul>
-                <li>field: formed from a single rotating cloud</li>
-                <li>dynamical: capture in dense stellar environments</li>
-            </li>
-
+            <h3>Binary formation in the field</h3>
+            <img class="no_background" src="images/bco_evolution.png" height="500px"/>
+            <div class="small_text">
+            <p class="center">From Konstantin A. Postnov and Lev R. Yungelson,
+            Living Rev. Relativity, <b>17,</b> 3 (2014), Fig. 7.</a></p>
+            </div>
         </section>
         <section>
-            <h3>The Einstein equations and curvature</h3>
+            <h3>Binary formation in clusters</h3>
+            <img class="no_background" src="images/m15.gif" height="400px"/>
+            <div class="small_text">
+            <p class="center">Image credit: <a href="https://www.noao.edu/image_gallery/html/im0013.html">NOAO</a></p>
+            </div>
+        </section>
+        <section>
+            <h3>Gravity as curvature</h3>
+            <img class="no_background" src="images/rubber_sheet.png" />
+            <div class="small_text">
+            <p class="center">Image credit: <a href="http://xkcd.com/1158/">XKCD</a></p>
+            </div>
+        </section>
+        <section>
+            <h3>The Einstein equations</h3>
             $$ R_{ab} = 8\pi(T_{ab} - \frac{1}{2}g_{ab}T) $$
             <p>where the Ricci tensor, \(R_{ab}\) encodes the change in a vector 
             parallel-transported around a closed curve. It is calculated by 
@@ -317,9 +343,9 @@
             <h3 >What makes these mergers interesting?</h3>
             <!-- <p> Compact binaries probe interesting physics: </p> -->
             <ul>
-                <li> general relativity in the strong field regime </li>
+                <li> tests of general relativity in the strong field regime </li>
                 <li> high-energy astrophysics: GRBs, r-process, kilonovae </li>
-                <li> possibly even the NS equation of state </li>
+                <li> constraints on the NS equation of state </li>
                 <li> multi-messenger astrophysics: gravitational waves,
                         electromagnetic radiation, neutrinos </li>
             </ul>
@@ -334,8 +360,16 @@
         <section class="photo_background" data-background="images/foellinger_uiuc.jpg">
             <div class="photo_foreground_text">
             <h2>Numerical relativity</h2>
-            <p>Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro</p>
+            <p class="center">Collaborators: Matt Duez, Yuk Tung Liu, Stu Shapiro</p>
             </div>
+        </section>
+        <section>
+            <h3>Target applications</h3>
+            <ul>
+                <li><a href="http://arxiv.org/abs/astro-ph/0510653">collapse of hypermassive NSs</a></li>
+                <li><a href="http://arxiv.org/abs/0706.2360">magneto-rotational collapse in massive stars</a></li>
+                <li><a href="http://arxiv.org/abs/0802.0200">post-collapse disk evolution</a></li> 
+            </ul>
         </section>
         <section>
             <h3 >The 3+1 splitting</h3>
@@ -419,7 +453,7 @@
             <!-- Remark: the next phase involved work with with Frans Pretorius
                 and William East at Princeton University. These were the first
                 BH-NS simulations with significant eccentrity. -->
-            <p>Collaborators: William East and Frans Pretorius</p>
+            <p class="center">Collaborators: William East and Frans Pretorius</p>
             </div>
         </section>
         <section>
@@ -432,6 +466,24 @@
                     (short GRBs with "extended" emission) -->
             </ul>
             <!-- show picture of globular cluster here too -->
+        </section>
+        <section>
+            <h3 >Problem setup</h3>
+            <div style="width:100px;height=100;display:inline;float:left">
+            <br/>
+            </div>
+            <div style="width:20%;display:inline;float:left" id="setup_fig"></div>
+            <div style="width:60%;display:inline;float:right">
+            <p> 
+            A capture binary forms if 
+            $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
+            <br/>
+            for Newtonian hyperbolic orbits, 
+            $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
+            <br/>
+            we take $w = 1000$ km/s.
+            </p> 
+            </div>
         </section>
         <section>
             <h3 >GR code of Pretorius, et al.</h3>
@@ -495,24 +547,6 @@
         <section>
             <h3 >The Berger-Colella flux correction</h3>
             <img class="no_background" src="./images/flux_correction.png" width='300px'>
-        </section>
-        <section>
-            <h3 >Problem setup</h3>
-            <div style="width:100px;height=100;display:inline;float:left">
-            <br/>
-            </div>
-            <div style="width:20%;display:inline;float:left" id="setup_fig"></div>
-            <div style="width:60%;display:inline;float:right">
-            <p> 
-            A capture binary forms if 
-            $$ \frac{1}{2}\mu w^2 + \delta E(b,w) \le 0 $$
-            <br/>
-            for Newtonian hyperbolic orbits, 
-            $$ r_p = \frac{b^2 w^2}{2M} + O(w^4) $$
-            <br/>
-            we take $w = 1000$ km/s.
-            </p> 
-            </div>
         </section>
         <section>
             <h3>Periastron radius dependence</h3>
@@ -579,7 +613,7 @@
         <section class="photo_background" data-background="images/kirc.jpg">
             <div class="photo_foreground_text">
             <h2>LIGO Computing</h2>
-            <p>Collaborators: Patrick Brady, Brian Moe, Roy Williams, ... </p>
+            <p class="center">Collaborators: Patrick Brady, Brian Moe, Roy Williams, ... </p>
             </div>
         </section>
         <section>
